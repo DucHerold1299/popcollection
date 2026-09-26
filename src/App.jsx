@@ -802,7 +802,7 @@ function Shelf({ user, initialFigs, onSync, onLogout, catalog, onContribute }) {
 /* ---------- Accounts (Supabase) ---------- */
 // Friends log in with a name + 6-digit PIN. Behind the scenes the name is turned
 // into an internal address, so nobody needs a real email.
-const toEmail = (name) => `${name.trim().toLowerCase()}@users.popcollection.app`;
+const toEmail = (name) => `${name.trim().toLowerCase()}@example.com`;
 const fontCss = `@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`;
 
 function Splash({ text = "Loading your shelf…" }) {
