@@ -1,9 +1,8 @@
+import { LOGO_IMAGE } from "../../lib/logo";
+
 // The app logo (login screen, loading screen, top bar and greeting).
-// To use your own: put one image into src/assets/logo/ (jpg, png, webp, avif or svg).
+// Put one or more images into src/assets/logo/; one is picked per visit (see lib/logo.js).
 // If that folder is empty, the drawing below is shown instead.
-const LOGO_IMAGE = Object.values(
-    import.meta.glob("../../assets/logo/*.{jpg,jpeg,png,webp,avif,svg}", { eager: true, import: "default" })
-)[0];
 
 export default function Logo({ size = 36 }) {
   if (LOGO_IMAGE) {
