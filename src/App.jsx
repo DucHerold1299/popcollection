@@ -112,69 +112,69 @@ function similarity(a, b) {
 function NyotaMark({ size = 36 }) {
   // Nyota-inspired: sleepy girl in a fluffy cloud hood with a little star
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
-      <circle cx="32" cy="32" r="32" fill="#FFE3EC" />
-      <g fill="#FFFFFF" stroke="#F2C6D3" strokeWidth="1.5">
-        <circle cx="18" cy="30" r="9" /><circle cx="46" cy="30" r="9" /><circle cx="24" cy="19" r="10" /><circle cx="40" cy="19" r="10" /><circle cx="32" cy="15" r="10" />
-      </g>
-      <circle cx="32" cy="36" r="15" fill="#FFE9DC" />
-      <path d="M18 31c4-6 9-8 14-8s10 2 14 8c-4-3-9-4-14-4s-10 1-14 4z" fill="#8C6A5C" />
-      <path d="M25 37q2 2 4 0M35 37q2 2 4 0" stroke="#5B4038" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      <ellipse cx="23.5" cy="41" rx="3" ry="1.8" fill="#FFB5B5" opacity=".8" /><ellipse cx="40.5" cy="41" rx="3" ry="1.8" fill="#FFB5B5" opacity=".8" />
-      <path d="M30.5 43.5q1.5 1 3 0" stroke="#5B4038" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-      <path d="M44 9l1.6 3.4 3.7.5-2.7 2.6.7 3.7-3.3-1.8-3.3 1.8.7-3.7-2.7-2.6 3.7-.5z" fill="#FFD66B" />
-    </svg>
+      <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
+        <circle cx="32" cy="32" r="32" fill="#FFE3EC" />
+        <g fill="#FFFFFF" stroke="#F2C6D3" strokeWidth="1.5">
+          <circle cx="18" cy="30" r="9" /><circle cx="46" cy="30" r="9" /><circle cx="24" cy="19" r="10" /><circle cx="40" cy="19" r="10" /><circle cx="32" cy="15" r="10" />
+        </g>
+        <circle cx="32" cy="36" r="15" fill="#FFE9DC" />
+        <path d="M18 31c4-6 9-8 14-8s10 2 14 8c-4-3-9-4-14-4s-10 1-14 4z" fill="#8C6A5C" />
+        <path d="M25 37q2 2 4 0M35 37q2 2 4 0" stroke="#5B4038" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        <ellipse cx="23.5" cy="41" rx="3" ry="1.8" fill="#FFB5B5" opacity=".8" /><ellipse cx="40.5" cy="41" rx="3" ry="1.8" fill="#FFB5B5" opacity=".8" />
+        <path d="M30.5 43.5q1.5 1 3 0" stroke="#5B4038" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+        <path d="M44 9l1.6 3.4 3.7.5-2.7 2.6.7 3.7-3.3-1.8-3.3 1.8.7-3.7-2.7-2.6 3.7-.5z" fill="#FFD66B" />
+      </svg>
   );
 }
 
 const Icon = {
   box: (p) => (
-    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-      <path d="M5 11l11-5 11 5v12l-11 5-11-5z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M5 11l11 5 11-5M16 16v12" fill="none" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
-      <text x="10.5" y="24" fontSize="8" fontWeight="800" fill="#CC6249" fontFamily="Nunito">?</text>
-    </svg>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
+        <path d="M5 11l11-5 11 5v12l-11 5-11-5z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M5 11l11 5 11-5M16 16v12" fill="none" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
+        <text x="10.5" y="24" fontSize="8" fontWeight="800" fill="#CC6249" fontFamily="Nunito">?</text>
+      </svg>
   ),
   figure: (p) => (
-    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-      <path d="M10 5c1 3 2 5 3 6M22 5c-1 3-2 5-3 6" stroke="#CC6249" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="16" cy="15" r="8" fill="#FFE9DC" stroke="#CC6249" strokeWidth="1.6" />
-      <path d="M11 26c0-3 2-4 5-4s5 1 5 4z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" />
-      <circle cx="13" cy="15" r="1.3" fill="#5B4038" /><circle cx="19" cy="15" r="1.3" fill="#5B4038" />
-      <path d="M13.5 18.5h5" stroke="#5B4038" strokeWidth="1.2" strokeDasharray="1 1" />
-    </svg>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
+        <path d="M10 5c1 3 2 5 3 6M22 5c-1 3-2 5-3 6" stroke="#CC6249" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="16" cy="15" r="8" fill="#FFE9DC" stroke="#CC6249" strokeWidth="1.6" />
+        <path d="M11 26c0-3 2-4 5-4s5 1 5 4z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" />
+        <circle cx="13" cy="15" r="1.3" fill="#5B4038" /><circle cx="19" cy="15" r="1.3" fill="#5B4038" />
+        <path d="M13.5 18.5h5" stroke="#5B4038" strokeWidth="1.2" strokeDasharray="1 1" />
+      </svg>
   ),
   tag: (p) => (
-    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-      <path d="M5 15V6h9l13 13-9 9z" fill="#D8EFE0" stroke="#4F7F5E" strokeWidth="1.6" strokeLinejoin="round" />
-      <circle cx="10.5" cy="11.5" r="2" fill="#4F7F5E" />
-      <text x="13" y="23" fontSize="8" fontWeight="800" fill="#4F7F5E" fontFamily="Nunito">€</text>
-    </svg>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
+        <path d="M5 15V6h9l13 13-9 9z" fill="#D8EFE0" stroke="#4F7F5E" strokeWidth="1.6" strokeLinejoin="round" />
+        <circle cx="10.5" cy="11.5" r="2" fill="#4F7F5E" />
+        <text x="13" y="23" fontSize="8" fontWeight="800" fill="#4F7F5E" fontFamily="Nunito">€</text>
+      </svg>
   ),
   secret: (p) => (
-    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-      <rect x="5" y="7" width="22" height="20" rx="4" fill="#EEE3F7" stroke="#7E62A3" strokeWidth="1.6" />
-      <path d="M16 11l1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6z" fill="#FFD66B" stroke="#7E62A3" strokeWidth="1.2" strokeLinejoin="round" />
-    </svg>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
+        <rect x="5" y="7" width="22" height="20" rx="4" fill="#EEE3F7" stroke="#7E62A3" strokeWidth="1.6" />
+        <path d="M16 11l1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6z" fill="#FFD66B" stroke="#7E62A3" strokeWidth="1.2" strokeLinejoin="round" />
+      </svg>
   ),
   camera: (p) => (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden {...p}>
-      <path d="M4 8h3l1.5-2h7L17 8h3v11H4z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M10.3 12.4q.6-.8 1.4-.9" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-    </svg>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden {...p}>
+        <path d="M4 8h3l1.5-2h7L17 8h3v11H4z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M10.3 12.4q.6-.8 1.4-.9" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      </svg>
   ),
   bag: (p) => (
-    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden {...p}>
-      <path d="M5 8h14l-1 12H6z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M9 8V6a3 3 0 016 0v2" fill="none" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden {...p}>
+        <path d="M5 8h14l-1 12H6z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M9 8V6a3 3 0 016 0v2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      </svg>
   ),
   miniBox: (p) => (
-    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden {...p}>
-      <path d="M4 8l8-4 8 4v9l-8 4-8-4z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M4 8l8 4 8-4M12 12v9" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden {...p}>
+        <path d="M4 8l8-4 8 4v9l-8 4-8-4z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M4 8l8 4 8-4M12 12v9" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      </svg>
   ),
 };
 
@@ -186,14 +186,14 @@ function FigureArt({ name = "", className = "" }) {
   const n = name.toLowerCase();
   const [bg, ink] = PALETTES[hashStr(name) % PALETTES.length];
   const kind = /labubu|monsters|zimomo/.test(n) ? "labubu" : /hirono/.test(n) ? "hirono" : /skull ?panda/.test(n) ? "skullpanda"
-    : /cry ?baby/.test(n) ? "crybaby" : /nyota/.test(n) ? "nyota" : /molly/.test(n) ? "molly" : /dimoo/.test(n) ? "dimoo" : /pucky/.test(n) ? "pucky" : "box";
+      : /cry ?baby/.test(n) ? "crybaby" : /nyota/.test(n) ? "nyota" : /molly/.test(n) ? "molly" : /dimoo/.test(n) ? "dimoo" : /pucky/.test(n) ? "pucky" : "box";
   const face = (eyes = "dot") => (
-    <g>
-      {eyes === "dot" && <><circle cx="41" cy="54" r="3" fill="#3D2E27" /><circle cx="59" cy="54" r="3" fill="#3D2E27" /><circle cx="42" cy="53" r="1" fill="#fff" /><circle cx="60" cy="53" r="1" fill="#fff" /></>}
-      {eyes === "sleepy" && <path d="M37 54q4 3 8 0M55 54q4 3 8 0" stroke="#3D2E27" strokeWidth="2.4" fill="none" strokeLinecap="round" />}
-      {eyes === "big" && <><ellipse cx="41" cy="54" rx="5" ry="6" fill="#3D2E27" /><ellipse cx="59" cy="54" rx="5" ry="6" fill="#3D2E27" /><circle cx="43" cy="52" r="1.8" fill="#fff" /><circle cx="61" cy="52" r="1.8" fill="#fff" /></>}
-      <ellipse cx="35" cy="62" rx="4" ry="2.4" fill="#FF9E9E" opacity=".55" /><ellipse cx="65" cy="62" rx="4" ry="2.4" fill="#FF9E9E" opacity=".55" />
-    </g>
+      <g>
+        {eyes === "dot" && <><circle cx="41" cy="54" r="3" fill="#3D2E27" /><circle cx="59" cy="54" r="3" fill="#3D2E27" /><circle cx="42" cy="53" r="1" fill="#fff" /><circle cx="60" cy="53" r="1" fill="#fff" /></>}
+        {eyes === "sleepy" && <path d="M37 54q4 3 8 0M55 54q4 3 8 0" stroke="#3D2E27" strokeWidth="2.4" fill="none" strokeLinecap="round" />}
+        {eyes === "big" && <><ellipse cx="41" cy="54" rx="5" ry="6" fill="#3D2E27" /><ellipse cx="59" cy="54" rx="5" ry="6" fill="#3D2E27" /><circle cx="43" cy="52" r="1.8" fill="#fff" /><circle cx="61" cy="52" r="1.8" fill="#fff" /></>}
+        <ellipse cx="35" cy="62" rx="4" ry="2.4" fill="#FF9E9E" opacity=".55" /><ellipse cx="65" cy="62" rx="4" ry="2.4" fill="#FF9E9E" opacity=".55" />
+      </g>
   );
   const head = <circle cx="50" cy="56" r="21" fill="#FFEBDD" />;
   const body = <path d="M34 92c0-12 7-17 16-17s16 5 16 17z" fill={ink} opacity=".85" />;
@@ -210,10 +210,10 @@ function FigureArt({ name = "", className = "" }) {
     box: <><path d="M22 38l28-12 28 12v32L50 84 22 70z" fill="#fff" stroke={ink} strokeWidth="2" strokeLinejoin="round" /><path d="M22 38l28 12 28-12M50 50v34" fill="none" stroke={ink} strokeWidth="2" strokeLinejoin="round" /><text x="30" y="73" fontSize="20" fontWeight="800" fill={ink} fontFamily="Nunito">?</text><text x="58" y="70" fontSize="14" fontWeight="800" fill={ink} opacity=".5" fontFamily="Nunito">?</text></>,
   };
   return (
-    <svg viewBox="0 0 100 100" className={className} role="img" aria-label={name ? `Illustration of ${name}` : "Figure illustration"} style={{ background: bg }}>
-      <circle cx="82" cy="18" r="3" fill="#fff" opacity=".8" /><circle cx="14" cy="80" r="2" fill="#fff" opacity=".8" />
-      {parts[kind]}
-    </svg>
+      <svg viewBox="0 0 100 100" className={className} role="img" aria-label={name ? `Illustration of ${name}` : "Figure illustration"} style={{ background: bg }}>
+        <circle cx="82" cy="18" r="3" fill="#fff" opacity=".8" /><circle cx="14" cy="80" r="2" fill="#fff" opacity=".8" />
+        {parts[kind]}
+      </svg>
   );
 }
 
@@ -240,10 +240,10 @@ const btnGhost = `${btn} border border-[#EBDCCB] bg-white text-stone-700 hover:b
 
 function Field({ label, children }) {
   return (
-    <label className="block">
-      <span className="block text-xs font-medium text-stone-500 mb-1.5">{label}</span>
-      {children}
-    </label>
+      <label className="block">
+        <span className="block text-xs font-medium text-stone-500 mb-1.5">{label}</span>
+        {children}
+      </label>
   );
 }
 
@@ -251,7 +251,7 @@ function Delta({ v, pct, bold = false }) {
   if (v == null) return <span className="text-stone-400 font-normal">no price data</span>;
   const up = v >= 0;
   return (
-    <span className={`tabular-nums ${up ? "text-[#4F7F5E]" : "text-[#B0626A]"} ${bold ? "" : "font-medium"}`}>
+      <span className={`tabular-nums ${up ? "text-[#4F7F5E]" : "text-[#B0626A]"} ${bold ? "" : "font-medium"}`}>
       {up ? "↑" : "↓"} {eur(Math.abs(v))}{pct != null && isFinite(pct) ? ` (${up ? "+" : "−"}${Math.abs(pct).toFixed(0)}%)` : ""}
     </span>
   );
@@ -264,28 +264,28 @@ function Modal({ title, onClose, children }) {
     return () => window.removeEventListener("keydown", h);
   }, [onClose]);
   return (
-    <div className="fixed inset-0 z-50 bg-[#3D2E27]/30 backdrop-blur-[3px] flex items-end sm:items-center justify-center sm:p-6" onClick={onClose} role="dialog" aria-modal="true" aria-label={title}>
-      <div className="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 sticky top-0 bg-white/95 backdrop-blur">
-          <h2 className="text-xl font-semibold text-[#3D2E27]" style={serif}>{title}</h2>
-          <button onClick={onClose} aria-label="Close" className="w-8 h-8 rounded-full text-stone-500 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">✕</button>
+      <div className="fixed inset-0 z-50 bg-[#3D2E27]/30 backdrop-blur-[3px] flex items-end sm:items-center justify-center sm:p-6" onClick={onClose} role="dialog" aria-modal="true" aria-label={title}>
+        <div className="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 sticky top-0 bg-white/95 backdrop-blur">
+            <h2 className="text-xl font-semibold text-[#3D2E27]" style={serif}>{title}</h2>
+            <button onClick={onClose} aria-label="Close" className="w-8 h-8 rounded-full text-stone-500 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">✕</button>
+          </div>
+          <div className="p-6">{children}</div>
         </div>
-        <div className="p-6">{children}</div>
       </div>
-    </div>
   );
 }
 
 function PhotoPicker({ onPhoto, busy, label = "Take or upload photo" }) {
   const ref = useRef(null);
   return (
-    <>
-      <button type="button" onClick={() => ref.current.click()} disabled={busy} className={btnGhost}>
-        <span className="inline-flex items-center gap-2">{busy ? "Reading photo…" : <><Icon.camera />{label}</>}</span>
-      </button>
-      <input ref={ref} type="file" accept="image/*" capture="environment" className="hidden"
-        onChange={(e) => { const f = e.target.files?.[0]; if (f) onPhoto(f); e.target.value = ""; }} />
-    </>
+      <>
+        <button type="button" onClick={() => ref.current.click()} disabled={busy} className={btnGhost}>
+          <span className="inline-flex items-center gap-2">{busy ? "Reading photo…" : <><Icon.camera />{label}</>}</span>
+        </button>
+        <input ref={ref} type="file" accept="image/*" capture="environment" className="hidden"
+               onChange={(e) => { const f = e.target.files?.[0]; if (f) onPhoto(f); e.target.value = ""; }} />
+      </>
   );
 }
 
@@ -296,47 +296,120 @@ function Thumb({ src, name = "", className = "" }) {
 /* ---------- Figure form ---------- */
 const normName = (n) => n.toLowerCase().replace(/[–—-]/g, " ").replace(/\s+/g, " ").trim();
 
+// Starter list of Pop Mart series, used for autocomplete. Add more anytime:
+// just append { character, series } to this list.
+const SERIES_LIST = [
+  // Nyota
+  { character: "Nyota", series: "Nyota's Fluffy Life" },
+  { character: "Nyota", series: "Nyota Growing up by Your Way" },
+  { character: "Nyota", series: "Nyota I Am the Seasons" },
+  { character: "Nyota", series: "Nyota We are All Stars" },
+  { character: "Nyota", series: "Nyota Where Moments Meet (Plush Pendant)" },
+  // Labubu / The Monsters
+  { character: "Labubu", series: "The Monsters – Have a Seat" },
+  { character: "Labubu", series: "The Monsters – Exciting Macaron" },
+  { character: "Labubu", series: "The Monsters – Big into Energy" },
+  { character: "Labubu", series: "The Monsters – Let's Checkmate" },
+  { character: "Labubu", series: "The Monsters – Fall in Wild" },
+  // Hirono
+  { character: "Hirono", series: "Hirono – Reshape" },
+  { character: "Hirono", series: "Hirono – Mime" },
+  { character: "Hirono", series: "Hirono – Little Mischief" },
+  { character: "Hirono", series: "Hirono – Echo" },
+  { character: "Hirono", series: "Hirono – The Other One" },
+  // Skullpanda
+  { character: "Skullpanda", series: "Skullpanda – The Sound" },
+  { character: "Skullpanda", series: "Skullpanda – Everyday Wonderland" },
+  { character: "Skullpanda", series: "Skullpanda – Tell Me What You Want" },
+  { character: "Skullpanda", series: "Skullpanda – Winter Symphony" },
+  // Crybaby
+  { character: "Crybaby", series: "Crybaby – Sad Club" },
+  { character: "Crybaby", series: "Crybaby – Crying Again" },
+  { character: "Crybaby", series: "Crybaby – Crying for Love" },
+  { character: "Crybaby", series: "Crybaby × Powerpuff Girls" },
+  // Others
+  { character: "Molly", series: "Molly – Career" },
+  { character: "Dimoo", series: "Dimoo – World" },
+  { character: "Hacipupu", series: "Hacipupu – Snuggle with You" },
+  { character: "Pucky", series: "Pucky – Sleeping Babies" },
+];
+
 function NameWithCatalog({ f, setF, catalog }) {
   const [open, setOpen] = useState(false);
   const [hi, setHi] = useState(0);
+  const inputRef = useRef(null);
   const q = normName(f.name);
-  const hits = q.length < 2 ? [] : Object.values(catalog).filter((c) => normName(c.name + " " + c.series).includes(q)).slice(0, 6);
-  const pick = (c) => {
-    setF((x) => ({ ...x, name: c.name, series: x.series || c.series, photo: x.photo || c.photo, sig: x.sig || c.sig, fromCatalog: !x.photo }));
-    setOpen(false);
+
+  // Pictures from the shared catalog first, then matching series.
+  const photoHits = q.length < 2 ? [] : Object.values(catalog)
+      .filter((c) => normName(c.name + " " + (c.series || "")).includes(q)).slice(0, 4)
+      .map((c) => ({ type: "photo", key: "p-" + c.key, c }));
+  const seriesHits = q.length < 2 ? [] : SERIES_LIST
+      .filter((x) => normName(x.character + " " + x.series).includes(q) && normName(f.series || "") !== normName(x.series)).slice(0, 8)
+      .map((x) => ({ type: "series", key: "s-" + x.series, x }));
+  const hits = [...photoHits, ...seriesHits];
+
+  const pick = (h) => {
+    if (h.type === "photo") {
+      const c = h.c;
+      setF((x) => ({ ...x, name: c.name, series: x.series || c.series, photo: x.photo || c.photo, sig: x.sig || c.sig, fromCatalog: !x.photo }));
+      setOpen(false);
+    } else {
+      // Pick a series: fill the series and start the name, then keep typing the exact figure.
+      setF((x) => ({ ...x, series: h.x.series, name: `${h.x.character} – ` }));
+      setOpen(false);
+      setTimeout(() => inputRef.current?.focus(), 0);
+    }
   };
+
   return (
-    <div className="relative">
-      <Field label="Figure name *">
-        <input autoFocus className={inputCls} value={f.name} placeholder="Start typing, e.g. Labubu"
-          role="combobox" aria-expanded={open && hits.length > 0} aria-autocomplete="list"
-          onChange={(e) => { setF((x) => ({ ...x, name: e.target.value })); setOpen(true); setHi(0); }}
-          onBlur={() => setTimeout(() => setOpen(false), 150)}
-          onKeyDown={(e) => {
-            if (!open || !hits.length) return;
-            if (e.key === "ArrowDown") { e.preventDefault(); setHi((h) => (h + 1) % hits.length); }
-            if (e.key === "ArrowUp") { e.preventDefault(); setHi((h) => (h - 1 + hits.length) % hits.length); }
-            if (e.key === "Enter") { e.preventDefault(); pick(hits[hi]); }
-          }} />
-      </Field>
-      {open && hits.length > 0 && (
-        <ul role="listbox" className="absolute z-10 mt-1 w-full sm:w-[150%] bg-white rounded-2xl border border-[#F3E4D4] shadow-xl overflow-hidden">
-          <li className="px-3 pt-2 pb-1 text-[11px] font-bold text-stone-400 uppercase tracking-wide">From the community catalog</li>
-          {hits.map((c, i) => (
-            <li key={c.key} role="option" aria-selected={i === hi}>
-              <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => pick(c)}
-                className={`w-full flex items-center gap-3 px-3 py-2 text-left ${i === hi ? "bg-[#FFF1EA]" : "hover:bg-[#FFF6EC]"}`}>
-                <img src={c.photo} alt="" className="w-10 h-10 rounded-xl object-cover" />
-                <span className="min-w-0">
-                  <span className="block text-sm font-bold truncate">{c.name}</span>
-                  <span className="block text-xs text-stone-500 truncate">{c.series || "No series"} · photo by {c.by}</span>
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div className="relative">
+        <Field label="Figure name *">
+          <input ref={inputRef} autoFocus className={inputCls} value={f.name} placeholder="Start typing, e.g. Nyota"
+                 role="combobox" aria-expanded={open && hits.length > 0} aria-autocomplete="list"
+                 onFocus={() => setOpen(true)}
+                 onChange={(e) => { setF((x) => ({ ...x, name: e.target.value })); setOpen(true); setHi(0); }}
+                 onBlur={() => setTimeout(() => setOpen(false), 150)}
+                 onKeyDown={(e) => {
+                   if (!open || !hits.length) return;
+                   if (e.key === "ArrowDown") { e.preventDefault(); setHi((h) => (h + 1) % hits.length); }
+                   if (e.key === "ArrowUp") { e.preventDefault(); setHi((h) => (h - 1 + hits.length) % hits.length); }
+                   if (e.key === "Enter") { e.preventDefault(); pick(hits[hi]); }
+                   if (e.key === "Escape") setOpen(false);
+                 }} />
+        </Field>
+        {f.series && <p className="text-xs text-stone-500 mt-1">Series: <b className="text-[#3D2E27]">{f.series}</b></p>}
+        {open && hits.length > 0 && (
+            <ul role="listbox" className="absolute z-10 mt-1 w-full sm:w-[150%] max-h-80 overflow-y-auto bg-white rounded-2xl border border-[#F3E4D4] shadow-xl">
+              {hits.map((h, i) => {
+                const header = i === 0 || hits[i - 1].type !== h.type;
+                return (
+                    <React.Fragment key={h.key}>
+                      {header && (
+                          <li className="px-3 pt-2 pb-1 text-[11px] font-bold text-stone-400 uppercase tracking-wide">
+                            {h.type === "photo" ? "With picture" : "Series"}
+                          </li>
+                      )}
+                      <li role="option" aria-selected={i === hi}>
+                        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => pick(h)}
+                                className={`w-full flex items-center gap-3 px-3 py-2 text-left ${i === hi ? "bg-[#FFF1EA]" : "hover:bg-[#FFF6EC]"}`}>
+                          {h.type === "photo"
+                              ? <img src={h.c.photo} alt="" className="w-10 h-10 rounded-xl object-cover" />
+                              : <FigureArt name={h.x.character} className="w-10 h-10 rounded-xl" />}
+                          <span className="min-w-0">
+                      <span className="block text-sm font-bold truncate">{h.type === "photo" ? h.c.name : h.x.series}</span>
+                      <span className="block text-xs text-stone-500 truncate">
+                        {h.type === "photo" ? `${h.c.series || "No series"} · photo by ${h.c.by}` : `${h.x.character} · then type the figure's name`}
+                      </span>
+                    </span>
+                        </button>
+                      </li>
+                    </React.Fragment>
+                );
+              })}
+            </ul>
+        )}
+      </div>
   );
 }
 
@@ -355,71 +428,71 @@ function FigureForm({ initial, onSave, onCancel, catalog = {} }) {
   };
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); if (valid) onSave({ ...f, paid: Number(String(f.paid).replace(",", ".")), qty: Math.max(1, Number(f.qty) || 1) }); }} className="space-y-5">
-      <div className="flex items-center gap-4">
-        <Thumb src={f.photo} name={f.name} className="w-24 h-24 rounded-xl shrink-0" />
-        <div className="space-y-2">
-          <div className="flex gap-2 flex-wrap">
-            <PhotoPicker onPhoto={handlePhoto} busy={busy} label={f.photo ? "Replace photo" : "Add photo"} />
-            {f.photo && <button type="button" onClick={() => setF({ ...f, photo: null, sig: null })} className={`${btn} text-stone-500 hover:text-[#B0626A]`}>Remove</button>}
-          </div>
-          <p className="text-xs text-stone-500">{err || (f.fromCatalog && f.photo ? "Picture added from the community catalog. Replace it with your own anytime." : "Your photo is shared with the community catalog, so friends get this picture too.")}</p>
-        </div>
-      </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <NameWithCatalog f={f} setF={setF} catalog={catalog} />
-        <Field label="Series"><input className={inputCls} value={f.series} onChange={set("series")} placeholder="e.g. The Monsters – Have a Seat" /></Field>
-        <div className="sm:col-span-2">
-          <span className="block text-xs font-medium text-stone-500 mb-1.5">How did you get it?</span>
-          <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="How did you get it?">
-            {[["box", <Icon.box />, "Mystery box", "Pulled from a blind box"], ["bought", <Icon.tag />, "Bought it", "Paid a specific price"]].map(([k, ic, t, d]) => (
-              <button type="button" key={k} role="radio" aria-checked={f.origin === k} onClick={() => setF({ ...f, origin: k })}
-                className={`text-left rounded-2xl border-2 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${f.origin === k ? "border-[#E0765C] bg-[#FFF1EA]" : "border-[#F3E4D4] bg-white hover:bg-[#FFF6EC]"}`}>
-                <span aria-hidden>{ic}</span>
-                <span className="block font-bold text-sm mt-1">{t}</span>
-                <span className="block text-xs text-stone-500">{d}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-        {f.origin === "box" ? (
-          <div className="sm:col-span-2 rounded-2xl bg-[#FFF6EC] p-4 space-y-3">
-            <Field label="Box price on Pop Mart (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="12,90" /></Field>
-            <div className="flex flex-wrap items-center gap-2">
-              {BOX_PRESETS.map((p) => (
-                <button type="button" key={p} onClick={() => setF({ ...f, paid: String(p).replace(".", ",") })}
-                  className={`rounded-full px-3 py-1 text-sm border focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${Number(String(f.paid).replace(",", ".")) === p ? "bg-[#E0765C] text-white border-[#E0765C]" : "bg-white border-[#EBDCCB] hover:border-[#E0765C]"}`}>
-                  {eur(p)}
-                </button>
-              ))}
-              <a href={popmartSearch(f.series || f.name)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#E0765C] hover:underline ml-1">Check price on Pop Mart ↗</a>
+      <form onSubmit={(e) => { e.preventDefault(); if (valid) onSave({ ...f, paid: Number(String(f.paid).replace(",", ".")), qty: Math.max(1, Number(f.qty) || 1) }); }} className="space-y-5">
+        <div className="flex items-center gap-4">
+          <Thumb src={f.photo} name={f.name} className="w-24 h-24 rounded-xl shrink-0" />
+          <div className="space-y-2">
+            <div className="flex gap-2 flex-wrap">
+              <PhotoPicker onPhoto={handlePhoto} busy={busy} label={f.photo ? "Replace photo" : "Add photo"} />
+              {f.photo && <button type="button" onClick={() => setF({ ...f, photo: null, sig: null })} className={`${btn} text-stone-500 hover:text-[#B0626A]`}>Remove</button>}
             </div>
-            <p className="text-xs text-stone-500">Pick a typical box price or type the exact one from popmart.com.</p>
+            <p className="text-xs text-stone-500">{err || (f.fromCatalog && f.photo ? "Picture added from the community catalog. Replace it with your own anytime." : "Your photo is shared with the community catalog, so friends get this picture too.")}</p>
           </div>
-        ) : (
-          <>
-            <Field label="Price you paid (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="25,00" /></Field>
-            <Field label="Bought from">
-              <select className={inputCls} value={f.from} onChange={set("from")}><option value="">Choose…</option>{BOUGHT_FROM.map((x) => <option key={x}>{x}</option>)}</select>
-            </Field>
-          </>
-        )}
-        <Field label="Quantity"><input type="number" min="1" className={inputCls} value={f.qty} onChange={set("qty")} /></Field>
-        <Field label="Bought on"><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>
-        <Field label="Condition">
-          <select className={inputCls} value={f.condition} onChange={set("condition")}>{CONDITIONS.map((c) => <option key={c}>{c}</option>)}</select>
-        </Field>
-        <Field label="Notes"><input className={inputCls} value={f.notes} onChange={set("notes")} placeholder="Where bought, trades…" /></Field>
-        <label className="flex items-center gap-3 self-end pb-2 cursor-pointer text-sm text-stone-700">
-          <input type="checkbox" checked={f.secret} onChange={set("secret")} className="w-4 h-4 accent-[#E0765C]" />
-          Secret / chase figure
-        </label>
-      </div>
-      <div className="flex gap-2 justify-end pt-2">
-        <button type="button" onClick={onCancel} className={btnGhost}>Cancel</button>
-        <button disabled={!valid || busy} className={btnPrimary}>Save figure</button>
-      </div>
-    </form>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <NameWithCatalog f={f} setF={setF} catalog={catalog} />
+          <Field label="Series"><input className={inputCls} value={f.series} onChange={set("series")} placeholder="e.g. The Monsters – Have a Seat" /></Field>
+          <div className="sm:col-span-2">
+            <span className="block text-xs font-medium text-stone-500 mb-1.5">How did you get it?</span>
+            <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="How did you get it?">
+              {[["box", <Icon.box />, "Mystery box", "Pulled from a blind box"], ["bought", <Icon.tag />, "Bought it", "Paid a specific price"]].map(([k, ic, t, d]) => (
+                  <button type="button" key={k} role="radio" aria-checked={f.origin === k} onClick={() => setF({ ...f, origin: k })}
+                          className={`text-left rounded-2xl border-2 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${f.origin === k ? "border-[#E0765C] bg-[#FFF1EA]" : "border-[#F3E4D4] bg-white hover:bg-[#FFF6EC]"}`}>
+                    <span aria-hidden>{ic}</span>
+                    <span className="block font-bold text-sm mt-1">{t}</span>
+                    <span className="block text-xs text-stone-500">{d}</span>
+                  </button>
+              ))}
+            </div>
+          </div>
+          {f.origin === "box" ? (
+              <div className="sm:col-span-2 rounded-2xl bg-[#FFF6EC] p-4 space-y-3">
+                <Field label="Box price on Pop Mart (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="12,90" /></Field>
+                <div className="flex flex-wrap items-center gap-2">
+                  {BOX_PRESETS.map((p) => (
+                      <button type="button" key={p} onClick={() => setF({ ...f, paid: String(p).replace(".", ",") })}
+                              className={`rounded-full px-3 py-1 text-sm border focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${Number(String(f.paid).replace(",", ".")) === p ? "bg-[#E0765C] text-white border-[#E0765C]" : "bg-white border-[#EBDCCB] hover:border-[#E0765C]"}`}>
+                        {eur(p)}
+                      </button>
+                  ))}
+                  <a href={popmartSearch(f.series || f.name)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#E0765C] hover:underline ml-1">Check price on Pop Mart ↗</a>
+                </div>
+                <p className="text-xs text-stone-500">Pick a typical box price or type the exact one from popmart.com.</p>
+              </div>
+          ) : (
+              <>
+                <Field label="Price you paid (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="25,00" /></Field>
+                <Field label="Bought from">
+                  <select className={inputCls} value={f.from} onChange={set("from")}><option value="">Choose…</option>{BOUGHT_FROM.map((x) => <option key={x}>{x}</option>)}</select>
+                </Field>
+              </>
+          )}
+          <Field label="Quantity"><input type="number" min="1" className={inputCls} value={f.qty} onChange={set("qty")} /></Field>
+          <Field label="Bought on"><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>
+          <Field label="Condition">
+            <select className={inputCls} value={f.condition} onChange={set("condition")}>{CONDITIONS.map((c) => <option key={c}>{c}</option>)}</select>
+          </Field>
+          <Field label="Notes"><input className={inputCls} value={f.notes} onChange={set("notes")} placeholder="Where bought, trades…" /></Field>
+          <label className="flex items-center gap-3 self-end pb-2 cursor-pointer text-sm text-stone-700">
+            <input type="checkbox" checked={f.secret} onChange={set("secret")} className="w-4 h-4 accent-[#E0765C]" />
+            Secret / chase figure
+          </label>
+        </div>
+        <div className="flex gap-2 justify-end pt-2">
+          <button type="button" onClick={onCancel} className={btnGhost}>Cancel</button>
+          <button disabled={!valid || busy} className={btnPrimary}>Save figure</button>
+        </div>
+      </form>
   );
 }
 
@@ -443,57 +516,57 @@ function IdentifyPanel({ figs, onOpen, onAddNew }) {
   const label = (s) => (s > 0.8 ? "Strong match" : s > 0.65 ? "Possible match" : "Weak match");
 
   return (
-    <div className="space-y-5">
-      <p className="text-sm text-stone-600">
-        Snap your figure on a plain background, roughly centred. The app compares it with the photos of figures already in your collection.
-      </p>
-      {withPhotos.length === 0 && (
-        <div className="rounded-xl bg-[#F6F1E7] text-[#7A6A45] text-sm p-4">
-          None of your figures has a photo yet, so there's nothing to compare against. Take a photo anyway and save it as a new figure. Next time it can be recognised.
+      <div className="space-y-5">
+        <p className="text-sm text-stone-600">
+          Snap your figure on a plain background, roughly centred. The app compares it with the photos of figures already in your collection.
+        </p>
+        {withPhotos.length === 0 && (
+            <div className="rounded-xl bg-[#F6F1E7] text-[#7A6A45] text-sm p-4">
+              None of your figures has a photo yet, so there's nothing to compare against. Take a photo anyway and save it as a new figure. Next time it can be recognised.
+            </div>
+        )}
+        <div className="flex items-center gap-3">
+          <PhotoPicker onPhoto={handle} busy={busy} label={result ? "Try another photo" : "Take or upload photo"} />
+          {err && <span className="text-sm text-[#B0626A]">{err}</span>}
         </div>
-      )}
-      <div className="flex items-center gap-3">
-        <PhotoPicker onPhoto={handle} busy={busy} label={result ? "Try another photo" : "Take or upload photo"} />
-        {err && <span className="text-sm text-[#B0626A]">{err}</span>}
-      </div>
 
-      {result && (
-        <div className="grid sm:grid-cols-[140px_1fr] gap-5">
-          <img src={result.photo} alt="Your photo" className="w-36 h-36 rounded-xl object-cover" />
-          <div>
-            <h3 className="text-sm font-medium text-stone-500 mb-2">{result.matches.length ? "Best matches in your collection" : "No figures to compare with"}</h3>
-            <ul className="space-y-2">
-              {result.matches.map(({ f, score }, i) => (
-                <li key={f.id}>
-                  <button onClick={() => onOpen(f)} className={`w-full flex items-center gap-3 p-2 rounded-xl border text-left hover:bg-[#FFF6EC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${i === 0 && score > 0.65 ? "border-[#F4B8A5] bg-[#FFF1EA]" : "border-stone-200"}`}>
-                    <Thumb src={f.photo} name={f.name} className="w-12 h-12 rounded-xl shrink-0" />
-                    <span className="flex-1 min-w-0">
+        {result && (
+            <div className="grid sm:grid-cols-[140px_1fr] gap-5">
+              <img src={result.photo} alt="Your photo" className="w-36 h-36 rounded-xl object-cover" />
+              <div>
+                <h3 className="text-sm font-medium text-stone-500 mb-2">{result.matches.length ? "Best matches in your collection" : "No figures to compare with"}</h3>
+                <ul className="space-y-2">
+                  {result.matches.map(({ f, score }, i) => (
+                      <li key={f.id}>
+                        <button onClick={() => onOpen(f)} className={`w-full flex items-center gap-3 p-2 rounded-xl border text-left hover:bg-[#FFF6EC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${i === 0 && score > 0.65 ? "border-[#F4B8A5] bg-[#FFF1EA]" : "border-stone-200"}`}>
+                          <Thumb src={f.photo} name={f.name} className="w-12 h-12 rounded-xl shrink-0" />
+                          <span className="flex-1 min-w-0">
                       <span className="block text-sm font-medium text-[#3D2E27] truncate">{f.name}</span>
                       <span className="block text-xs text-stone-500">{label(score)} · {Math.round(score * 100)}%</span>
                     </span>
-                    <span className="text-xs text-[#E0765C] font-medium pr-1">Prices →</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <button onClick={() => onAddNew(result)} className={`${btnPrimary} mt-4`}>Not in my collection, add as new figure</button>
-          </div>
-        </div>
-      )}
-    </div>
+                          <span className="text-xs text-[#E0765C] font-medium pr-1">Prices →</span>
+                        </button>
+                      </li>
+                  ))}
+                </ul>
+                <button onClick={() => onAddNew(result)} className={`${btnPrimary} mt-4`}>Not in my collection, add as new figure</button>
+              </div>
+            </div>
+        )}
+      </div>
   );
 }
 
 /* ---------- Price panel ---------- */
 function Bar({ label, value, max, color }) {
   return (
-    <div className="flex items-center gap-3 text-sm">
-      <span className="w-36 shrink-0 truncate text-stone-600">{label}</span>
-      <div className="flex-1 h-2.5 rounded-full bg-stone-100 overflow-hidden">
-        <div className="h-full rounded-full motion-safe:transition-all" style={{ width: `${(value / max) * 100}%`, background: color }} />
+      <div className="flex items-center gap-3 text-sm">
+        <span className="w-36 shrink-0 truncate text-stone-600">{label}</span>
+        <div className="flex-1 h-2.5 rounded-full bg-stone-100 overflow-hidden">
+          <div className="h-full rounded-full motion-safe:transition-all" style={{ width: `${(value / max) * 100}%`, background: color }} />
+        </div>
+        <span className="w-20 text-right font-medium tabular-nums text-[#3D2E27]">{eur(value)}</span>
       </div>
-      <span className="w-20 text-right font-medium tabular-nums text-[#3D2E27]">{eur(value)}</span>
-    </div>
   );
 }
 
@@ -518,75 +591,75 @@ function PricePanel({ fig, onUpdate }) {
   };
 
   const H = ({ n, children }) => (
-    <h3 className="flex items-center gap-2 text-sm font-semibold text-[#3D2E27] mb-3">
-      <span className="w-5 h-5 rounded-full bg-[#FDE3D8] text-[#E0765C] text-xs flex items-center justify-center">{n}</span>{children}
-    </h3>
+      <h3 className="flex items-center gap-2 text-sm font-semibold text-[#3D2E27] mb-3">
+        <span className="w-5 h-5 rounded-full bg-[#FDE3D8] text-[#E0765C] text-xs flex items-center justify-center">{n}</span>{children}
+      </h3>
   );
 
   return (
-    <div className="space-y-7">
-      <div className="flex items-center gap-4">
-        <Thumb src={fig.photo} name={fig.name} className="w-16 h-16 rounded-xl shrink-0" />
-        <div className="text-sm text-stone-500">{fig.series || "No series"} · paid <span className="text-[#3D2E27] font-medium">{eur(fig.paid)}</span></div>
-      </div>
-
-      <section>
-        <H n="1">Look it up</H>
-        <input className={inputCls + " mb-3"} value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search term" />
-        <div className="flex flex-wrap gap-2">
-          {searchLinks(query).map((l) => (
-            <a key={l.name} href={l.url} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-1.5 text-sm text-stone-700 hover:bg-[#FFF6EC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
-              <span className="w-2 h-2 rounded-full" style={{ background: SRC_COLOR[l.name] }} />{l.name} ↗
-            </a>
-          ))}
+      <div className="space-y-7">
+        <div className="flex items-center gap-4">
+          <Thumb src={fig.photo} name={fig.name} className="w-16 h-16 rounded-xl shrink-0" />
+          <div className="text-sm text-stone-500">{fig.series || "No series"} · paid <span className="text-[#3D2E27] font-medium">{eur(fig.paid)}</span></div>
         </div>
-      </section>
 
-      <section>
-        <H n="2">Log what you found</H>
-        <form onSubmit={add} className="grid grid-cols-2 sm:grid-cols-4 gap-2 items-end">
-          <Field label="Source"><select className={inputCls} value={src} onChange={(e) => setSrc(e.target.value)}>{SOURCES.map((x) => <option key={x}>{x}</option>)}</select></Field>
-          <Field label="Price €"><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="29,00" /></Field>
-          <Field label="Date"><input type="date" className={inputCls} value={date} onChange={(e) => setDate(e.target.value)} /></Field>
-          <button disabled={!valid} className={`${btnPrimary} h-[38px]`}>Add</button>
-        </form>
-      </section>
-
-      <section>
-        <H n="3">Compare</H>
-        {bySrc.length === 0 ? (
-          <p className="text-sm text-stone-500 rounded-xl bg-[#FFF6EC] p-4 text-center">No prices logged yet. Search above, then add a few listings.</p>
-        ) : (
-          <div className="space-y-3">
-            <Bar label="You paid" value={Number(fig.paid)} max={max} color="#C9B6A4" />
-            {bySrc.map((b) => <Bar key={b.name} label={`${b.name} (${b.n})`} value={b.med} max={max} color={SRC_COLOR[b.name]} />)}
-            <div className="flex flex-wrap justify-between gap-2 pt-4 mt-2 border-t border-stone-200 text-sm text-stone-600">
-              <span>Estimated value <span className="text-[#3D2E27] font-semibold">{eur(s.market)}</span></span>
-              <Delta v={s.market != null ? s.market - fig.paid : null} pct={fig.paid ? ((s.market - fig.paid) / fig.paid) * 100 : null} />
-            </div>
-          </div>
-        )}
-      </section>
-
-      {fig.checks.length > 0 && (
         <section>
-          <h3 className="text-sm font-semibold text-[#3D2E27] mb-2">History</h3>
-          <ul className="divide-y divide-stone-100 rounded-xl border border-stone-200">
-            {[...fig.checks].sort((a, b) => b.date.localeCompare(a.date)).map((c) => (
-              <li key={c.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
-                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: SRC_COLOR[c.source] }} />
-                <span className="flex-1 text-stone-700">{c.source}</span>
-                <span className="text-stone-400 tabular-nums">{new Date(c.date).toLocaleDateString("de-DE")}</span>
-                <span className="font-medium tabular-nums w-20 text-right text-[#3D2E27]">{eur(c.price)}</span>
-                <button onClick={() => onUpdate({ ...fig, checks: fig.checks.filter((x) => x.id !== c.id) })}
-                  aria-label={`Delete ${c.source} price`} className="text-stone-300 hover:text-[#B0626A] px-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">✕</button>
-              </li>
+          <H n="1">Look it up</H>
+          <input className={inputCls + " mb-3"} value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search term" />
+          <div className="flex flex-wrap gap-2">
+            {searchLinks(query).map((l) => (
+                <a key={l.name} href={l.url} target="_blank" rel="noopener noreferrer"
+                   className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-1.5 text-sm text-stone-700 hover:bg-[#FFF6EC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
+                  <span className="w-2 h-2 rounded-full" style={{ background: SRC_COLOR[l.name] }} />{l.name} ↗
+                </a>
             ))}
-          </ul>
+          </div>
         </section>
-      )}
-    </div>
+
+        <section>
+          <H n="2">Log what you found</H>
+          <form onSubmit={add} className="grid grid-cols-2 sm:grid-cols-4 gap-2 items-end">
+            <Field label="Source"><select className={inputCls} value={src} onChange={(e) => setSrc(e.target.value)}>{SOURCES.map((x) => <option key={x}>{x}</option>)}</select></Field>
+            <Field label="Price €"><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="29,00" /></Field>
+            <Field label="Date"><input type="date" className={inputCls} value={date} onChange={(e) => setDate(e.target.value)} /></Field>
+            <button disabled={!valid} className={`${btnPrimary} h-[38px]`}>Add</button>
+          </form>
+        </section>
+
+        <section>
+          <H n="3">Compare</H>
+          {bySrc.length === 0 ? (
+              <p className="text-sm text-stone-500 rounded-xl bg-[#FFF6EC] p-4 text-center">No prices logged yet. Search above, then add a few listings.</p>
+          ) : (
+              <div className="space-y-3">
+                <Bar label="You paid" value={Number(fig.paid)} max={max} color="#C9B6A4" />
+                {bySrc.map((b) => <Bar key={b.name} label={`${b.name} (${b.n})`} value={b.med} max={max} color={SRC_COLOR[b.name]} />)}
+                <div className="flex flex-wrap justify-between gap-2 pt-4 mt-2 border-t border-stone-200 text-sm text-stone-600">
+                  <span>Estimated value <span className="text-[#3D2E27] font-semibold">{eur(s.market)}</span></span>
+                  <Delta v={s.market != null ? s.market - fig.paid : null} pct={fig.paid ? ((s.market - fig.paid) / fig.paid) * 100 : null} />
+                </div>
+              </div>
+          )}
+        </section>
+
+        {fig.checks.length > 0 && (
+            <section>
+              <h3 className="text-sm font-semibold text-[#3D2E27] mb-2">History</h3>
+              <ul className="divide-y divide-stone-100 rounded-xl border border-stone-200">
+                {[...fig.checks].sort((a, b) => b.date.localeCompare(a.date)).map((c) => (
+                    <li key={c.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
+                      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: SRC_COLOR[c.source] }} />
+                      <span className="flex-1 text-stone-700">{c.source}</span>
+                      <span className="text-stone-400 tabular-nums">{new Date(c.date).toLocaleDateString("de-DE")}</span>
+                      <span className="font-medium tabular-nums w-20 text-right text-[#3D2E27]">{eur(c.price)}</span>
+                      <button onClick={() => onUpdate({ ...fig, checks: fig.checks.filter((x) => x.id !== c.id) })}
+                              aria-label={`Delete ${c.source} price`} className="text-stone-300 hover:text-[#B0626A] px-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">✕</button>
+                    </li>
+                ))}
+              </ul>
+            </section>
+        )}
+      </div>
   );
 }
 
@@ -647,171 +720,178 @@ function Shelf({ user, initialFigs, onSync, onLogout, catalog, onContribute }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27]" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`}</style>
+      <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27]" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
+        <style>{`@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`}</style>
 
-      <header className="sticky top-0 z-40 bg-[#FFF8F0]/85 backdrop-blur border-b border-[#F3E4D4]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center gap-3 justify-between">
-          <div className="flex items-center gap-2.5">
-            <NyotaMark size={38} />
-            <span className="text-xl font-semibold tracking-tight" style={serif}>Pop Collection</span>
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <button onClick={exportJson} className={btnGhost}>Backup</button>
-            <button onClick={() => fileRef.current.click()} className={btnGhost}>Restore</button>
-            <input ref={fileRef} type="file" accept="application/json" className="hidden" onChange={importJson} />
-            <div className="flex items-center gap-2 pl-2 ml-1 border-l border-[#F3E4D4]">
-              <span className="w-9 h-9 rounded-full bg-[#FFE7DC] text-[#CC6249] font-extrabold flex items-center justify-center" aria-hidden>{user[0].toUpperCase()}</span>
-              <span className="hidden sm:inline text-sm font-bold">{user}</span>
-              <button onClick={onLogout} className={`${btn} text-stone-500 hover:text-[#CC6249]`}>Log out</button>
+        <header className="sticky top-0 z-40 bg-[#FFF8F0]/85 backdrop-blur border-b border-[#F3E4D4]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center gap-3 justify-between">
+            <div className="flex items-center gap-2.5">
+              <NyotaMark size={38} />
+              <span className="text-xl font-semibold tracking-tight" style={serif}>Pop Collection</span>
             </div>
-          </div>
-        </div>
-      </header>
-
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-[#FFE0CC] opacity-70" />
-        <div aria-hidden className="absolute top-40 -left-24 w-64 h-64 rounded-full bg-[#FFF0B8] opacity-60" />
-        <div aria-hidden className="absolute bottom-0 right-1/3 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
-          <div>
-            <h1 className="flex items-center gap-3 text-4xl sm:text-5xl font-semibold tracking-tight" style={serif}>
-              Hi {user} <NyotaMark size={52} />
-            </h1>
-            <p className="mt-3 text-sm text-[#7A6558]"><b className="text-[#3D2E27]">{Object.keys(catalog).length}</b> figure pictures in the community catalog</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <button onClick={() => setEditing(blankFigure())} className={`${btnPrimary} px-6 py-3 text-base rounded-full`}>+ Add a figure</button>
-              <button onClick={() => setIdentifying(true)} className={`${btnGhost} px-6 py-3 text-base rounded-full`}><span className="inline-flex items-center gap-2"><Icon.camera />Identify by photo</span></button>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              ["On the shelf", totals.count, "bg-[#FFE7DC]", <Icon.figure />],
-              ["Total paid", eur(totals.paid), "bg-[#FFF3C9]", <Icon.box />],
-              ["Worth today", eur(totals.market), "bg-[#E1F2E7]", <Icon.tag />],
-              ["Gain / loss", <Delta bold v={totals.priced ? totals.delta : null} />, "bg-[#EEE6F6]", <Icon.secret />],
-            ].map(([l, v, bg, ic]) => (
-              <div key={l} className={`${bg} rounded-3xl p-5`}>
-                <div className="mb-2" aria-hidden>{ic}</div>
-                <div className="text-xs font-bold text-[#7A6558]">{l}</div>
-                <div className="text-lg sm:text-2xl font-extrabold mt-0.5 tabular-nums">{v}</div>
+            <div className="flex gap-2 flex-wrap">
+              <button onClick={exportJson} className={btnGhost}>Backup</button>
+              <button onClick={() => fileRef.current.click()} className={btnGhost}>Restore</button>
+              <input ref={fileRef} type="file" accept="application/json" className="hidden" onChange={importJson} />
+              <div className="flex items-center gap-2 pl-2 ml-1 border-l border-[#F3E4D4]">
+                <span className="w-9 h-9 rounded-full bg-[#FFE7DC] text-[#CC6249] font-extrabold flex items-center justify-center" aria-hidden>{user[0].toUpperCase()}</span>
+                <span className="hidden sm:inline text-sm font-bold">{user}</span>
+                <button onClick={onLogout} className={`${btn} text-stone-500 hover:text-[#CC6249]`}>Log out</button>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </header>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
-        <h2 className="text-2xl font-semibold mb-5" style={serif}>My shelf</h2>
-
-        <div className="flex flex-col sm:flex-row gap-3 mb-6">
-          <div className="relative sm:max-w-sm w-full">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm" aria-hidden>⌕</span>
-            <input className={inputCls + " pl-8"} placeholder="Search by name, series or notes…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
-          </div>
-          <select className={inputCls + " sm:w-56"} value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
-            <option value="delta">Biggest gain</option>
-            <option value="value">Highest value</option>
-            <option value="stale">Needs price check</option>
-            <option value="recent">Recently bought</option>
-            <option value="name">Name A–Z</option>
-          </select>
-        </div>
-
-        {rows.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-[#EBDCCB] p-12 text-center">
-            <p className="text-lg font-semibold mb-1">{figs.length ? "Nothing matches" : "Your shelf is empty"}</p>
-            <p className="text-stone-500 text-sm mb-5">{figs.length ? "Try a different search." : "Add your first figure or identify one by photo."}</p>
-            {!figs.length && <button onClick={() => setEditing(blankFigure())} className={btnPrimary}>+ Add figure</button>}
-          </div>
-        ) : (
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {rows.map(({ f, s }) => (
-              <li key={f.id} className="rounded-3xl bg-white border border-[#F3E4D4] overflow-hidden flex flex-col shadow-[0_6px_20px_-12px_rgba(160,100,60,0.35)] hover:-translate-y-1 hover:shadow-[0_14px_30px_-14px_rgba(160,100,60,0.45)] motion-safe:transition-all">
-                <div className="flex gap-4 p-4">
-                  <Thumb src={f.photo} name={f.name} className="w-20 h-20 rounded-2xl shrink-0" />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <p className="text-xs text-stone-500 truncate">{f.series || "No series"}</p>
-                      <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold rounded-full bg-[#FFF1EA] text-[#CC6249] px-2 py-0.5">{f.origin === "bought" ? <><Icon.bag />{f.from || "Bought"}</> : <><Icon.miniBox />Box</>}</span>
-                      {f.secret && <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-[#F3EAD3] text-[#8A7340] px-2 py-0.5">Secret</span>}
-                    </div>
-                    <h3 className="font-semibold leading-snug mt-0.5">{f.name}{f.qty > 1 && <span className="text-sm font-normal text-stone-400"> ×{f.qty}</span>}</h3>
-                    <p className="text-xs text-stone-400 mt-1">{f.condition} · {new Date(f.bought).toLocaleDateString("de-DE")}</p>
+        <section className="relative overflow-hidden">
+          <div aria-hidden className="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-[#FFE0CC] opacity-70" />
+          <div aria-hidden className="absolute top-40 -left-24 w-64 h-64 rounded-full bg-[#FFF0B8] opacity-60" />
+          <div aria-hidden className="absolute bottom-0 right-1/3 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
+            <div>
+              <h1 className="flex items-center gap-3 text-4xl sm:text-5xl font-semibold tracking-tight" style={serif}>
+                Hi {user} <NyotaMark size={52} />
+              </h1>
+              <p className="mt-3 text-sm text-[#7A6558]"><b className="text-[#3D2E27]">{Object.keys(catalog).length}</b> figure pictures in the community catalog</p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <button onClick={() => setEditing(blankFigure())} className={`${btnPrimary} px-6 py-3 text-base rounded-full`}>+ Add a figure</button>
+                <button onClick={() => setIdentifying(true)} className={`${btnGhost} px-6 py-3 text-base rounded-full`}><span className="inline-flex items-center gap-2"><Icon.camera />Identify by photo</span></button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                ["On the shelf", totals.count, "bg-[#FFE7DC]", <Icon.figure />],
+                ["Total paid", eur(totals.paid), "bg-[#FFF3C9]", <Icon.box />],
+                ["Worth today", eur(totals.market), "bg-[#E1F2E7]", <Icon.tag />],
+                ["Gain / loss", <Delta bold v={totals.priced ? totals.delta : null} />, "bg-[#EEE6F6]", <Icon.secret />],
+              ].map(([l, v, bg, ic]) => (
+                  <div key={l} className={`${bg} rounded-3xl p-5`}>
+                    <div className="mb-2" aria-hidden>{ic}</div>
+                    <div className="text-xs font-bold text-[#7A6558]">{l}</div>
+                    <div className="text-lg sm:text-2xl font-extrabold mt-0.5 tabular-nums">{v}</div>
                   </div>
-                </div>
-                <div className="px-4 pb-4 flex-1">
-                  {f.notes && <p className="text-sm text-stone-500 italic mb-3">“{f.notes}”</p>}
-                  <dl className="grid grid-cols-3 gap-2 text-sm rounded-xl bg-[#FFF6EC] p-3">
-                    <div><dt className="text-stone-400 text-xs">Paid</dt><dd className="font-medium tabular-nums">{eur(f.paid)}</dd></div>
-                    <div><dt className="text-stone-400 text-xs">Market</dt><dd className="font-medium tabular-nums">{eur(s.market)}</dd></div>
-                    <div><dt className="text-stone-400 text-xs">Change</dt><dd className="text-xs mt-0.5"><Delta v={s.market != null ? s.market - f.paid : null} /></dd></div>
-                  </dl>
-                  <div className="flex items-center justify-between mt-3 gap-2">
-                    <div className="flex gap-1.5">
-                      {SOURCES.map((src) => {
-                        const n = f.checks.filter((c) => c.source === src).length;
-                        return n ? <span key={src} title={`${src}: ${n} price(s)`} className="w-2 h-2 rounded-full" style={{ background: SRC_COLOR[src] }} /> : null;
-                      })}
-                    </div>
-                    <p className={`text-xs ${s.stale ? "text-[#A0804A]" : "text-stone-400"}`}>
-                      {s.last ? `Checked ${daysAgo(s.last)}d ago${s.stale ? " · update" : ""}` : "Never price-checked"}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex border-t border-stone-100 text-sm">
-                  <button onClick={() => setPricing(f)} className="flex-1 py-2.5 font-medium text-[#E0765C] hover:bg-[#FFF1EA] focus:outline-none focus-visible:bg-[#FFF1EA]">Prices</button>
-                  <button onClick={() => setEditing(f)} className="flex-1 py-2.5 text-stone-600 border-l border-stone-100 hover:bg-[#FFF6EC] focus:outline-none focus-visible:bg-[#FFF6EC]">Edit</button>
-                  <button onClick={() => remove(f)} className="flex-1 py-2.5 text-stone-400 border-l border-stone-100 hover:text-[#B0626A] hover:bg-[#FBF3F3] focus:outline-none focus-visible:bg-[#FBF3F3]">Delete</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
+          <h2 className="text-2xl font-semibold mb-5" style={serif}>My shelf</h2>
+
+          <div className="flex flex-col sm:flex-row gap-3 mb-6">
+            <div className="relative sm:max-w-sm w-full">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm" aria-hidden>⌕</span>
+              <input className={inputCls + " pl-8"} placeholder="Search by name, series or notes…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
+            </div>
+            <select className={inputCls + " sm:w-56"} value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
+              <option value="delta">Biggest gain</option>
+              <option value="value">Highest value</option>
+              <option value="stale">Needs price check</option>
+              <option value="recent">Recently bought</option>
+              <option value="name">Name A–Z</option>
+            </select>
+          </div>
+
+          {rows.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-[#EBDCCB] p-12 text-center">
+                <p className="text-lg font-semibold mb-1">{figs.length ? "Nothing matches" : "Your shelf is empty"}</p>
+                <p className="text-stone-500 text-sm mb-5">{figs.length ? "Try a different search." : "Add your first figure or identify one by photo."}</p>
+                {!figs.length && <button onClick={() => setEditing(blankFigure())} className={btnPrimary}>+ Add figure</button>}
+              </div>
+          ) : (
+              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {rows.map(({ f, s }) => (
+                    <li key={f.id} className="rounded-3xl bg-white border border-[#F3E4D4] overflow-hidden flex flex-col shadow-[0_6px_20px_-12px_rgba(160,100,60,0.35)] hover:-translate-y-1 hover:shadow-[0_14px_30px_-14px_rgba(160,100,60,0.45)] motion-safe:transition-all">
+                      <div className="flex gap-4 p-4">
+                        <Thumb src={f.photo} name={f.name} className="w-20 h-20 rounded-2xl shrink-0" />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-2">
+                            <p className="text-xs text-stone-500 truncate">{f.series || "No series"}</p>
+                            <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold rounded-full bg-[#FFF1EA] text-[#CC6249] px-2 py-0.5">{f.origin === "bought" ? <><Icon.bag />{f.from || "Bought"}</> : <><Icon.miniBox />Box</>}</span>
+                            {f.secret && <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-[#F3EAD3] text-[#8A7340] px-2 py-0.5">Secret</span>}
+                          </div>
+                          <h3 className="font-semibold leading-snug mt-0.5">{f.name}{f.qty > 1 && <span className="text-sm font-normal text-stone-400"> ×{f.qty}</span>}</h3>
+                          <p className="text-xs text-stone-400 mt-1">{f.condition} · {new Date(f.bought).toLocaleDateString("de-DE")}</p>
+                        </div>
+                      </div>
+                      <div className="px-4 pb-4 flex-1">
+                        {f.notes && <p className="text-sm text-stone-500 italic mb-3">“{f.notes}”</p>}
+                        <dl className="grid grid-cols-3 gap-2 text-sm rounded-xl bg-[#FFF6EC] p-3">
+                          <div><dt className="text-stone-400 text-xs">Paid</dt><dd className="font-medium tabular-nums">{eur(f.paid)}</dd></div>
+                          <div><dt className="text-stone-400 text-xs">Market</dt><dd className="font-medium tabular-nums">{eur(s.market)}</dd></div>
+                          <div><dt className="text-stone-400 text-xs">Change</dt><dd className="text-xs mt-0.5"><Delta v={s.market != null ? s.market - f.paid : null} /></dd></div>
+                        </dl>
+                        <div className="flex items-center justify-between mt-3 gap-2">
+                          <div className="flex gap-1.5">
+                            {SOURCES.map((src) => {
+                              const n = f.checks.filter((c) => c.source === src).length;
+                              return n ? <span key={src} title={`${src}: ${n} price(s)`} className="w-2 h-2 rounded-full" style={{ background: SRC_COLOR[src] }} /> : null;
+                            })}
+                          </div>
+                          <p className={`text-xs ${s.stale ? "text-[#A0804A]" : "text-stone-400"}`}>
+                            {s.last ? `Checked ${daysAgo(s.last)}d ago${s.stale ? " · update" : ""}` : "Never price-checked"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex border-t border-stone-100 text-sm">
+                        <button onClick={() => setPricing(f)} className="flex-1 py-2.5 font-medium text-[#E0765C] hover:bg-[#FFF1EA] focus:outline-none focus-visible:bg-[#FFF1EA]">Prices</button>
+                        <button onClick={() => setEditing(f)} className="flex-1 py-2.5 text-stone-600 border-l border-stone-100 hover:bg-[#FFF6EC] focus:outline-none focus-visible:bg-[#FFF6EC]">Edit</button>
+                        <button onClick={() => remove(f)} className="flex-1 py-2.5 text-stone-400 border-l border-stone-100 hover:text-[#B0626A] hover:bg-[#FBF3F3] focus:outline-none focus-visible:bg-[#FBF3F3]">Delete</button>
+                      </div>
+                    </li>
+                ))}
+              </ul>
+          )}
+
+          <p className="text-xs text-stone-400 mt-12 max-w-2xl leading-relaxed">
+            Your shelf is saved online automatically. Backup downloads a copy as a file, just in case.
+            Estimated value is the median of prices logged in the last 60 days, or all prices if none are recent.
+          </p>
+        </main>
+
+        {editing && (
+            <Modal title={figs.some((x) => x.id === editing.id) ? "Edit figure" : "New figure"} onClose={() => setEditing(null)}>
+              <FigureForm catalog={catalog} initial={{ ...editing, paid: String(editing.paid) }} onSave={save} onCancel={() => setEditing(null)} />
+            </Modal>
         )}
-
-        <p className="text-xs text-stone-400 mt-12 max-w-2xl leading-relaxed">
-          Your shelf is saved online automatically. Backup downloads a copy as a file, just in case.
-          Estimated value is the median of prices logged in the last 60 days, or all prices if none are recent.
-        </p>
-      </main>
-
-      {editing && (
-        <Modal title={figs.some((x) => x.id === editing.id) ? "Edit figure" : "New figure"} onClose={() => setEditing(null)}>
-          <FigureForm catalog={catalog} initial={{ ...editing, paid: String(editing.paid) }} onSave={save} onCancel={() => setEditing(null)} />
-        </Modal>
-      )}
-      {pricing && (
-        <Modal title={pricing.name} onClose={() => setPricing(null)}>
-          <PricePanel key={pricing.id} fig={pricing} onUpdate={updateFig} />
-        </Modal>
-      )}
-      {identifying && (
-        <Modal title="Identify by photo" onClose={() => setIdentifying(false)}>
-          <IdentifyPanel
-            figs={figs}
-            onOpen={(f) => { setIdentifying(false); setPricing(f); }}
-            onAddNew={(r) => { setIdentifying(false); setEditing(blankFigure({ photo: r.photo, sig: r.sig })); }}
-          />
-        </Modal>
-      )}
-      {toast && <div role="status" className="fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-[#3D2E27] text-white text-sm px-4 py-2 shadow-lg z-50">{toast}</div>}
-    </div>
+        {pricing && (
+            <Modal title={pricing.name} onClose={() => setPricing(null)}>
+              <PricePanel key={pricing.id} fig={pricing} onUpdate={updateFig} />
+            </Modal>
+        )}
+        {identifying && (
+            <Modal title="Identify by photo" onClose={() => setIdentifying(false)}>
+              <IdentifyPanel
+                  figs={figs}
+                  onOpen={(f) => { setIdentifying(false); setPricing(f); }}
+                  onAddNew={(r) => { setIdentifying(false); setEditing(blankFigure({ photo: r.photo, sig: r.sig })); }}
+              />
+            </Modal>
+        )}
+        {toast && <div role="status" className="fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-[#3D2E27] text-white text-sm px-4 py-2 shadow-lg z-50">{toast}</div>}
+      </div>
   );
 }
 
 /* ---------- Accounts (Supabase) ---------- */
 // Friends log in with a name + 6-digit PIN. Behind the scenes the name is turned
 // into an internal address, so nobody needs a real email.
-const toEmail = (name) => `yourname+pop-${name.trim().toLowerCase()}@gmail.com`;
+// Set VITE_LOGIN_EMAIL in Vercel to a real address you own (e.g. you@gmail.com).
+// Each friend becomes you+pop-name@gmail.com. No emails are sent.
+const LOGIN_EMAIL = (import.meta.env.VITE_LOGIN_EMAIL || "").trim();
+const toEmail = (name) => {
+  const [local, domain] = LOGIN_EMAIL.split("@");
+  if (!local || !domain) throw new Error("VITE_LOGIN_EMAIL is not set in Vercel.");
+  return `${local}+pop-${name.trim().toLowerCase()}@${domain}`;
+};
 const fontCss = `@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`;
 
 function Splash({ text = "Loading your shelf…" }) {
   return (
-    <div className="min-h-screen bg-[#FFF8F0] text-[#7A6558] flex flex-col items-center justify-center gap-4" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
-      <style>{fontCss}</style>
-      <span className="motion-safe:animate-bounce"><NyotaMark size={64} /></span>
-      <p className="font-bold">{text}</p>
-    </div>
+      <div className="min-h-screen bg-[#FFF8F0] text-[#7A6558] flex flex-col items-center justify-center gap-4" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
+        <style>{fontCss}</style>
+        <span className="motion-safe:animate-bounce"><NyotaMark size={64} /></span>
+        <p className="font-bold">{text}</p>
+      </div>
   );
 }
 
@@ -829,52 +909,55 @@ function AuthScreen() {
     if (!/^[a-zA-Z0-9_.-]{3,20}$/.test(n)) return setErr("Your name needs 3–20 letters, numbers, dots, dashes or underscores (no spaces).");
     if (!/^\d{6}$/.test(pin)) return setErr("Your PIN is 6 digits.");
     setBusy(true);
+    let email;
+    try { email = toEmail(n); } catch (e2) { setBusy(false); return setErr(e2.message); }
     const { error } = mode === "register"
-      ? await supabase.auth.signUp({ email: toEmail(n), password: pin, options: { data: { name: n } } })
-      : await supabase.auth.signInWithPassword({ email: toEmail(n), password: pin });
+        ? await supabase.auth.signUp({ email, password: pin, options: { data: { name: n } } })
+        : await supabase.auth.signInWithPassword({ email, password: pin });
     setBusy(false);
     if (!error) return;
     const m = error.message.toLowerCase();
     if (m.includes("already")) setErr("That name is taken. Try another one.");
     else if (m.includes("invalid login")) setErr("Name or PIN doesn't match.");
+    else if (m.includes("security purposes")) setErr("Please wait a minute before trying again.");
     else if (m.includes("rate") || m.includes("too many")) setErr("Too many tries. Wait a minute and try again.");
     else setErr("Something went wrong: " + error.message);
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27] relative overflow-hidden flex items-center justify-center p-4" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
-      <style>{fontCss}</style>
-      <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-[#FFE0CC] opacity-70" />
-      <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-[#FFF0B8] opacity-60" />
-      <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
+      <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27] relative overflow-hidden flex items-center justify-center p-4" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
+        <style>{fontCss}</style>
+        <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-[#FFE0CC] opacity-70" />
+        <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-[#FFF0B8] opacity-60" />
+        <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
 
-      <div className="relative w-full max-w-md">
-        <div className="text-center mb-8">
-          <span className="inline-block mb-4"><NyotaMark size={72} /></span>
-          <h1 className="text-4xl font-semibold tracking-tight" style={serif}>Pop Collection</h1>
-        </div>
-
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_-24px_rgba(160,100,60,0.45)] border border-[#F3E4D4]">
-          <div className="grid grid-cols-2 bg-[#FFF1EA] rounded-full p-1 mb-6" role="tablist">
-            {[["login", "Log in"], ["register", "Create account"]].map(([m, l]) => (
-              <button key={m} role="tab" aria-selected={mode === m} onClick={() => { setMode(m); setErr(""); }}
-                className={`rounded-full py-2 text-sm font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${mode === m ? "bg-white shadow text-[#CC6249]" : "text-[#7A6558]"}`}>{l}</button>
-            ))}
+        <div className="relative w-full max-w-md">
+          <div className="text-center mb-8">
+            <span className="inline-block mb-4"><NyotaMark size={72} /></span>
+            <h1 className="text-4xl font-semibold tracking-tight" style={serif}>Pop Collection</h1>
           </div>
-          <form onSubmit={submit} className="space-y-4">
-            <Field label={mode === "register" ? "Pick a name" : "Your name"}>
-              <input autoFocus className={inputCls + " py-3 text-base"} value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. labubu_lover" autoComplete="username" autoCapitalize="none" />
-            </Field>
-            <Field label={mode === "register" ? "Choose a 6-digit PIN" : "PIN"}>
-              <input className={inputCls + " py-3 text-base tracking-[0.5em]"} value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 6))} inputMode="numeric" type="password" placeholder="••••••" autoComplete={mode === "register" ? "new-password" : "current-password"} />
-            </Field>
-            {err && <p role="alert" className="text-sm text-[#B0626A] bg-[#FBF0EF] rounded-xl px-3 py-2">{err}</p>}
-            <button disabled={busy} className={`${btnPrimary} w-full py-3 text-base rounded-full`}>{busy ? "One moment…" : mode === "register" ? "Create my shelf" : "Open my shelf"}</button>
-          </form>
-          {mode === "register" && <p className="text-xs text-center text-stone-400 mt-5">Remember your PIN. There's no email, so it can't be reset automatically.</p>}
+
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_-24px_rgba(160,100,60,0.45)] border border-[#F3E4D4]">
+            <div className="grid grid-cols-2 bg-[#FFF1EA] rounded-full p-1 mb-6" role="tablist">
+              {[["login", "Log in"], ["register", "Create account"]].map(([m, l]) => (
+                  <button key={m} role="tab" aria-selected={mode === m} onClick={() => { setMode(m); setErr(""); }}
+                          className={`rounded-full py-2 text-sm font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${mode === m ? "bg-white shadow text-[#CC6249]" : "text-[#7A6558]"}`}>{l}</button>
+              ))}
+            </div>
+            <form onSubmit={submit} className="space-y-4">
+              <Field label={mode === "register" ? "Pick a name" : "Your name"}>
+                <input autoFocus className={inputCls + " py-3 text-base"} value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. labubu_lover" autoComplete="username" autoCapitalize="none" />
+              </Field>
+              <Field label={mode === "register" ? "Choose a 6-digit PIN" : "PIN"}>
+                <input className={inputCls + " py-3 text-base tracking-[0.5em]"} value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 6))} inputMode="numeric" type="password" placeholder="••••••" autoComplete={mode === "register" ? "new-password" : "current-password"} />
+              </Field>
+              {err && <p role="alert" className="text-sm text-[#B0626A] bg-[#FBF0EF] rounded-xl px-3 py-2">{err}</p>}
+              <button disabled={busy} className={`${btnPrimary} w-full py-3 text-base rounded-full`}>{busy ? "One moment…" : mode === "register" ? "Create my shelf" : "Open my shelf"}</button>
+            </form>
+            {mode === "register" && <p className="text-xs text-center text-stone-400 mt-5">Remember your PIN. There's no email, so it can't be reset automatically.</p>}
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 
@@ -923,10 +1006,10 @@ function LoggedIn({ session }) {
   if (loadErr) return <Splash text={`Couldn't load your shelf: ${loadErr}`} />;
   if (!data) return <Splash />;
   return (
-    <>
-      <Shelf user={name} initialFigs={data} onSync={sync} onLogout={() => supabase.auth.signOut()} catalog={catalog} onContribute={contribute} />
-      {saveErr && <div role="alert" className="fixed bottom-6 right-6 max-w-xs rounded-2xl bg-[#B0626A] text-white text-sm px-4 py-3 shadow-lg z-50">{saveErr}</div>}
-    </>
+      <>
+        <Shelf user={name} initialFigs={data} onSync={sync} onLogout={() => supabase.auth.signOut()} catalog={catalog} onContribute={contribute} />
+        {saveErr && <div role="alert" className="fixed bottom-6 right-6 max-w-xs rounded-2xl bg-[#B0626A] text-white text-sm px-4 py-3 shadow-lg z-50">{saveErr}</div>}
+      </>
   );
 }
 
