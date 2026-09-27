@@ -53,7 +53,7 @@ export default function IdentifyPanel({ figs, onOpen, onAddNew }) {
                       <span className="block text-sm font-medium text-pc-ink truncate">{f.name}</span>
                       <span className="block text-xs text-stone-500">{label(score)} · {Math.round(score * 100)}%</span>
                     </span>
-                          <span className="text-xs text-pc-accent font-medium pr-1">Prices →</span>
+                          <span className="text-xs text-pc-accent font-medium pr-1">Open →</span>
                         </button>
                       </li>
                   ))}

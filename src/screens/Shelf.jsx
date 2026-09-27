@@ -4,18 +4,16 @@ import ShelfHero from "../components/shelf/ShelfHero";
 import FigureCard from "../components/shelf/FigureCard";
 import Modal from "../components/ui/Modal";
 import FigureForm from "../components/figure-form/FigureForm";
-import PricePanel from "../components/prices/PricePanel";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
 import ProfilePicture from "../components/profile/ProfilePicture";
-import { blankFigure, stats } from "../lib/figures";
+import { blankFigure, collectionTotals, paidTotal } from "../lib/figures";
 import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
 
 const SORTS = {
-  delta: (a, b) => (b.s.delta ?? -1e9) - (a.s.delta ?? -1e9),
-  value: (a, b) => (b.s.marketTotal ?? -1) - (a.s.marketTotal ?? -1),
-  name: (a, b) => a.f.name.localeCompare(b.f.name),
-  recent: (a, b) => b.f.bought.localeCompare(a.f.bought),
-  stale: (a, b) => (a.s.last || "").localeCompare(b.s.last || ""),
+  recent: (a, b) => b.bought.localeCompare(a.bought),
+  name: (a, b) => a.name.localeCompare(b.name),
+  series: (a, b) => (a.series || "~").localeCompare(b.series || "~") || a.name.localeCompare(b.name),
+  paid: (a, b) => paidTotal(b) - paidTotal(a),
 };
 
 // The main page after logging in: summary, search, the list of figures and the pop-up windows.
@@ -24,9 +22,8 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
   const prevFigs = useRef(initialFigs);
   useEffect(() => { const before = prevFigs.current; prevFigs.current = figs; if (before !== figs) onSync(before, figs); }, [figs]);
   const [q, setQ] = useState("");
-  const [sort, setSort] = useState("delta");
+  const [sort, setSort] = useState("recent");
   const [editing, setEditing] = useState(null);
-  const [pricing, setPricing] = useState(null);
   const [identifying, setIdentifying] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [toast, setToast] = useState("");
@@ -35,18 +32,12 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
 
   const rows = useMemo(() => {
     const t = q.toLowerCase();
-    const list = figs.filter((f) => (f.name + " " + f.series + " " + f.notes).toLowerCase().includes(t)).map((f) => ({ f, s: stats(f) }));
-    return list.sort(SORTS[sort]);
+    return figs.filter((f) => (f.name + " " + f.series + " " + f.notes).toLowerCase().includes(t)).sort(SORTS[sort]);
   }, [figs, q, sort]);
 
-  const totals = useMemo(() => {
-    let paid = 0, market = 0, count = 0, priced = 0;
-    figs.forEach((f) => { const s = stats(f); count += f.qty; paid += s.paidTotal; if (s.marketTotal != null) { market += s.marketTotal; priced += s.paidTotal; } });
-    return { paid, market, count, delta: market - priced, priced };
-  }, [figs]);
+  const totals = useMemo(() => collectionTotals(figs), [figs]);
 
   const save = (f) => { if (f.photo && !f.fromCatalog) onContribute(f); setFigs((xs) => (xs.some((x) => x.id === f.id) ? xs.map((x) => (x.id === f.id ? f : x)) : [f, ...xs])); setEditing(null); flash("Saved"); };
-  const updateFig = (f) => { setFigs((xs) => xs.map((x) => (x.id === f.id ? f : x))); setPricing(f); };
   const remove = (f) => { if (confirm(`Delete "${f.name}"?`)) setFigs((xs) => xs.filter((x) => x.id !== f.id)); };
 
   const changeAvatar = async (picture) => {
@@ -72,11 +63,10 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               <input className={inputCls + " pl-8"} placeholder="Search by name, series or notes…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
             </div>
             <select className={inputCls + " sm:w-56"} value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
-              <option value="delta">Biggest gain</option>
-              <option value="value">Highest value</option>
-              <option value="stale">Needs price check</option>
               <option value="recent">Recently bought</option>
               <option value="name">Name A–Z</option>
+              <option value="series">Series</option>
+              <option value="paid">Price paid</option>
             </select>
           </div>
 
@@ -88,8 +78,8 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               </div>
           ) : (
               <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rows.map(({ f, s }) => (
-                    <FigureCard key={f.id} f={f} s={s} onPrices={() => setPricing(f)} onEdit={() => setEditing(f)} onDelete={() => remove(f)} />
+                {rows.map((f) => (
+                    <FigureCard key={f.id} f={f} onEdit={() => setEditing(f)} onDelete={() => remove(f)} />
                 ))}
               </ul>
           )}
@@ -100,16 +90,11 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               <FigureForm catalog={catalog} initial={{ ...editing, paid: String(editing.paid) }} onSave={save} onCancel={() => setEditing(null)} />
             </Modal>
         )}
-        {pricing && (
-            <Modal title={pricing.name} onClose={() => setPricing(null)}>
-              <PricePanel key={pricing.id} fig={pricing} onUpdate={updateFig} />
-            </Modal>
-        )}
         {identifying && (
             <Modal title="Identify by photo" onClose={() => setIdentifying(false)}>
               <IdentifyPanel
                   figs={figs}
-                  onOpen={(f) => { setIdentifying(false); setPricing(f); }}
+                  onOpen={(f) => { setIdentifying(false); setEditing(f); }}
                   onAddNew={(r) => { setIdentifying(false); setEditing(blankFigure({ photo: r.photo, sig: r.sig })); }}
               />
             </Modal>

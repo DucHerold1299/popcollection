@@ -1,6 +1,5 @@
 import Logo from "../icons/Logo";
 import Icon from "../icons/Icon";
-import Delta from "../ui/Delta";
 import { eur } from "../../lib/format";
 import { btnGhost, btnPrimary, serif } from "../../styles/theme";
 
@@ -33,9 +32,9 @@ export default function ShelfHero({ user, totals, onAdd, onIdentify }) {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <StatCard label="On the shelf" value={totals.count} bg="bg-pc-decor1" icon={<Icon.figure />} />
-            <StatCard label="Total paid" value={eur(totals.paid)} bg="bg-pc-decor2" icon={<Icon.box />} />
-            <StatCard label="Worth today" value={eur(totals.market)} bg="bg-pc-decor3" icon={<Icon.tag />} />
-            <StatCard label="Gain / loss" value={<Delta bold v={totals.priced ? totals.delta : null} />} bg="bg-pc-decor4" icon={<Icon.secret />} />
+            <StatCard label="Total paid" value={eur(totals.paid)} bg="bg-pc-decor2" icon={<Icon.tag />} />
+            <StatCard label="Series" value={totals.series} bg="bg-pc-decor3" icon={<Icon.box />} />
+            <StatCard label="Secrets" value={totals.secrets} bg="bg-pc-decor4" icon={<Icon.secret />} />
           </div>
         </div>
       </section>

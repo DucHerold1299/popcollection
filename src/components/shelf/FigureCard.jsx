@@ -1,11 +1,11 @@
 import Icon from "../icons/Icon";
 import Thumb from "../ui/Thumb";
-import Delta from "../ui/Delta";
-import { SOURCES, SRC_COLOR } from "../../lib/constants";
-import { eur, daysAgo } from "../../lib/format";
+import { eur } from "../../lib/format";
+import { searchLinks } from "../../lib/links";
 
-// One figure on the shelf. `s` is the result of stats(f).
-export default function FigureCard({ f, s, onPrices, onEdit, onDelete }) {
+// One figure on the shelf.
+export default function FigureCard({ f, onEdit, onDelete }) {
+  const query = f.name.replace(/–/g, " ").replace(/\s+/g, " ").trim();
   return (
       <li className="rounded-3xl bg-white border border-pc-line overflow-hidden flex flex-col shadow-[0_6px_20px_-12px_rgb(var(--pc-shadow)/0.35)] hover:-translate-y-1 hover:shadow-[0_14px_30px_-14px_rgb(var(--pc-shadow)/0.45)] motion-safe:transition-all">
         <div className="flex gap-4 p-4">
@@ -20,28 +20,21 @@ export default function FigureCard({ f, s, onPrices, onEdit, onDelete }) {
             <p className="text-xs text-stone-400 mt-1">{f.condition} · {new Date(f.bought).toLocaleDateString("de-DE")}</p>
           </div>
         </div>
-        <div className="px-4 pb-4 flex-1">
-          {f.notes && <p className="text-sm text-stone-500 italic mb-3">“{f.notes}”</p>}
-          <dl className="grid grid-cols-3 gap-2 text-sm rounded-xl bg-pc-surface p-3">
-            <div><dt className="text-stone-400 text-xs">Paid</dt><dd className="font-medium tabular-nums">{eur(f.paid)}</dd></div>
-            <div><dt className="text-stone-400 text-xs">Market</dt><dd className="font-medium tabular-nums">{eur(s.market)}</dd></div>
-            <div><dt className="text-stone-400 text-xs">Change</dt><dd className="text-xs mt-0.5"><Delta v={s.market != null ? s.market - f.paid : null} /></dd></div>
-          </dl>
-          <div className="flex items-center justify-between mt-3 gap-2">
-            <div className="flex gap-1.5">
-              {SOURCES.map((src) => {
-                const n = f.checks.filter((c) => c.source === src).length;
-                return n ? <span key={src} title={`${src}: ${n} price(s)`} className="w-2 h-2 rounded-full" style={{ background: SRC_COLOR[src] }} /> : null;
-              })}
-            </div>
-            <p className={`text-xs ${s.stale ? "text-[#A0804A]" : "text-stone-400"}`}>
-              {s.last ? `Checked ${daysAgo(s.last)}d ago${s.stale ? " · update" : ""}` : "Never price-checked"}
-            </p>
+        <div className="px-4 pb-4 flex-1 space-y-3">
+          {f.notes && <p className="text-sm text-stone-500 italic">“{f.notes}”</p>}
+          <div className="flex items-center justify-between gap-2 rounded-xl bg-pc-surface px-3 py-2 text-sm">
+            <span className="text-stone-500">Paid</span>
+            <span className="font-medium tabular-nums">{eur(f.paid)}{f.qty > 1 && <span className="text-stone-400 font-normal"> each</span>}</span>
           </div>
+          <p className="text-xs text-stone-400">
+            Look up:{" "}
+            {searchLinks(query).map((l, i) => (
+                <span key={l.name}>{i > 0 && " · "}<a href={l.url} target="_blank" rel="noopener noreferrer" className="font-bold text-pc-accent hover:underline">{l.name} ↗</a></span>
+            ))}
+          </p>
         </div>
         <div className="flex border-t border-stone-100 text-sm">
-          <button onClick={onPrices} className="flex-1 py-2.5 font-medium text-pc-accent hover:bg-pc-softer focus:outline-none focus-visible:bg-pc-softer">Prices</button>
-          <button onClick={onEdit} className="flex-1 py-2.5 text-stone-600 border-l border-stone-100 hover:bg-pc-surface focus:outline-none focus-visible:bg-pc-surface">Edit</button>
+          <button onClick={onEdit} className="flex-1 py-2.5 font-medium text-pc-accent hover:bg-pc-softer focus:outline-none focus-visible:bg-pc-softer">Edit</button>
           <button onClick={onDelete} className="flex-1 py-2.5 text-stone-400 border-l border-stone-100 hover:text-[#B0626A] hover:bg-[#FBF3F3] focus:outline-none focus-visible:bg-[#FBF3F3]">Delete</button>
         </div>
       </li>
