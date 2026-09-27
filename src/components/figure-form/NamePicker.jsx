@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NameWithCatalog from "./NameWithCatalog";
 import BrowsePopMart from "./BrowsePopMart";
+import { figureName } from "../../data/characters";
 
 // Switch between typing the name and browsing the Pop Mart list.
 
@@ -21,8 +22,11 @@ export default function NamePicker({ f, setF, catalog }) {
         {mode === "type" ? (
             <NameWithCatalog key={focusKey} f={f} setF={setF} catalog={catalog} />
         ) : (
-            <BrowsePopMart onPick={({ character, series }) => {
-              setF((x) => ({ ...x, series, name: `${character} – ` }));
+            <BrowsePopMart onPick={({ character, series, figure, secret }) => {
+              // With a figure the name is complete; without one, start the name and let the user type the rest.
+              setF((x) => (figure
+                  ? { ...x, series, name: figureName(character, figure), secret }
+                  : { ...x, series, name: `${character} – `, secret: false }));
               setMode("type");
               setFocusKey((k) => k + 1);
             }} />

@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react";
 import Field from "../ui/Field";
 import FigureArt from "../icons/FigureArt";
-import { SERIES_LIST } from "../../data/characters";
+import { SERIES_LIST, FIGURE_LIST } from "../../data/characters";
 import { normName } from "../../lib/format";
 import { inputCls } from "../../styles/theme";
 
-// Name input with suggestions from the community catalog and the series list.
+// Name input with suggestions: pictures from the community catalog, figures, then series.
+
+const GROUP_LABEL = { photo: "With picture", figure: "Figures", series: "Series" };
 
 export default function NameWithCatalog({ f, setF, catalog }) {
   const [open, setOpen] = useState(false);
@@ -13,24 +15,38 @@ export default function NameWithCatalog({ f, setF, catalog }) {
   const inputRef = useRef(null);
   const q = normName(f.name);
 
-  // Pictures from the shared catalog first, then matching series.
+  const inChosenSeries = (x) => normName(x.series) === normName(f.series || "");
   const photoHits = q.length < 2 ? [] : Object.values(catalog)
       .filter((c) => normName(c.name + " " + (c.series || "")).includes(q)).slice(0, 4)
       .map((c) => ({ type: "photo", key: "p-" + c.key, c }));
+  // Figures from the already chosen series come first.
+  const figureHits = q.length < 2 ? [] : FIGURE_LIST
+      .filter((x) => normName(x.name + " " + x.series).includes(q) && normName(x.name) !== q)
+      .sort((a, b) => inChosenSeries(b) - inChosenSeries(a)).slice(0, 16)
+      .map((x) => ({ type: "figure", key: "f-" + x.series + "-" + x.figure, x }));
   const seriesHits = q.length < 2 ? [] : SERIES_LIST
-      .filter((x) => normName(x.character + " " + x.series).includes(q) && normName(f.series || "") !== normName(x.series)).slice(0, 8)
+      .filter((x) => normName(x.character + " " + x.series).includes(q) && !inChosenSeries(x)).slice(0, 5)
       .map((x) => ({ type: "series", key: "s-" + x.series, x }));
-  const hits = [...photoHits, ...seriesHits];
+  const hits = [...photoHits, ...figureHits, ...seriesHits];
+
+  const title = (h) => (h.type === "photo" ? h.c.name : h.type === "figure" ? h.x.name : h.x.series);
+  const subtitle = (h) => (h.type === "photo" ? `${h.c.series || "No series"} · photo by ${h.c.by}`
+      : h.type === "figure" ? h.x.series
+      : `${h.x.character} · ${h.x.figures.length ? `${h.x.figures.length} figures` : "then type the figure's name"}`);
 
   const pick = (h) => {
     if (h.type === "photo") {
       const c = h.c;
       setF((x) => ({ ...x, name: c.name, series: x.series || c.series, photo: x.photo || c.photo, sig: x.sig || c.sig, fromCatalog: !x.photo }));
       setOpen(false);
-    } else {
-      // Pick a series: fill the series and start the name, then keep typing the exact figure.
-      setF((x) => ({ ...x, series: h.x.series, name: `${h.x.character} – ` }));
+    } else if (h.type === "figure") {
+      setF((x) => ({ ...x, name: h.x.name, series: h.x.series, secret: h.x.secret }));
       setOpen(false);
+    } else {
+      // Pick a series: fill the series and start the name, then show that series' figures to pick from.
+      setF((x) => ({ ...x, series: h.x.series, name: `${h.x.character} – `, secret: false }));
+      setHi(0);
+      setOpen(true);
       setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
@@ -60,7 +76,7 @@ export default function NameWithCatalog({ f, setF, catalog }) {
                     <React.Fragment key={h.key}>
                       {header && (
                           <li className="px-3 pt-2 pb-1 text-[11px] font-bold text-stone-400 uppercase tracking-wide">
-                            {h.type === "photo" ? "With picture" : "Series"}
+                            {GROUP_LABEL[h.type]}
                           </li>
                       )}
                       <li role="option" aria-selected={i === hi}>
@@ -70,10 +86,11 @@ export default function NameWithCatalog({ f, setF, catalog }) {
                               ? <img src={h.c.photo} alt="" className="w-10 h-10 rounded-xl object-cover" />
                               : <FigureArt name={h.x.character} className="w-10 h-10 rounded-xl" />}
                           <span className="min-w-0">
-                      <span className="block text-sm font-bold truncate">{h.type === "photo" ? h.c.name : h.x.series}</span>
-                      <span className="block text-xs text-stone-500 truncate">
-                        {h.type === "photo" ? `${h.c.series || "No series"} · photo by ${h.c.by}` : `${h.x.character} · then type the figure's name`}
+                      <span className="flex items-center gap-2 text-sm font-bold">
+                        <span className="truncate">{title(h)}</span>
+                        {h.type === "figure" && h.x.secret && <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-[#F3EAD3] text-[#8A7340] px-2 py-0.5">Secret</span>}
                       </span>
+                      <span className="block text-xs text-stone-500 truncate">{subtitle(h)}</span>
                     </span>
                         </button>
                       </li>
