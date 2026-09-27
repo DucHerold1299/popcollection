@@ -966,6 +966,24 @@ function Splash({ text = "Loading your shelf…" }) {
   );
 }
 
+// Login wallpapers: paste direct image links here (they should end in .jpg, .png or .webp).
+const LOGIN_WALLPAPERS = Object.values(
+    import.meta.glob("./assets/wallpapers/*.{jpg,jpeg,png,webp,avif}", { eager: true, import: "default" })
+);
+
+// Picks one per page load, never the same one twice in a row.
+const pickWallpaper = () => {
+  const n = LOGIN_WALLPAPERS.length;
+  if (!n) return null;
+  let last = -1;
+  try { const s = localStorage.getItem("pc-last-wallpaper"); if (s !== null) last = Number(s); } catch {}
+  let i = Math.floor(Math.random() * n);
+  if (n > 1 && i === last) i = (i + 1) % n;
+  try { localStorage.setItem("pc-last-wallpaper", String(i)); } catch {}
+  return LOGIN_WALLPAPERS[i];
+};
+const LOGIN_BG = pickWallpaper();
+
 function AuthScreen() {
   const [mode, setMode] = useState("login");
   const [name, setName] = useState("");
@@ -998,13 +1016,23 @@ function AuthScreen() {
   return (
       <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27] relative overflow-hidden flex items-center justify-center p-4" style={{ fontFamily: "'Nunito', system-ui, sans-serif" }}>
         <style>{fontCss}</style>
-        <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-[#FFE0CC] opacity-70" />
-        <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-[#FFF0B8] opacity-60" />
-        <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
-
+        {LOGIN_BG ? (
+            <>
+              <img src={LOGIN_BG} alt="" aria-hidden
+                   onLoad={(e) => (e.currentTarget.style.opacity = 1)}
+                   onError={(e) => (e.currentTarget.style.display = "none")}
+                   className="absolute inset-0 w-full h-full object-cover opacity-0 motion-safe:transition-opacity duration-700" />
+              <div aria-hidden className="absolute inset-0 bg-[#3D2E27]/20" />
+            </>
+        ) : (
+            <>
+              <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-[#FFE0CC] opacity-70" />
+              <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-[#FFF0B8] opacity-60" />
+              <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
+            </>
+        )}
         <div className="relative w-full max-w-md">
-          <div className="text-center mb-8">
-            <span className="inline-block mb-4"><NyotaMark size={72} /></span>
+          <div className={`text-center mb-8 ${LOGIN_BG ? "bg-white/75 backdrop-blur-md rounded-3xl py-5 px-8 mx-auto w-fit" : ""}`}>            <span className="inline-block mb-4"><NyotaMark size={72} /></span>
             <h1 className="text-4xl font-semibold tracking-tight" style={serif}>Pop Collection</h1>
           </div>
 
