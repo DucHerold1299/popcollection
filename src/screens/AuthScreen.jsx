@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../supabase";
 import Field from "../components/ui/Field";
-import NyotaMark from "../components/icons/NyotaMark";
+import Logo from "../components/icons/Logo";
 import { toEmail } from "../lib/auth";
 import { LOGIN_BG } from "../lib/wallpapers";
 import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
@@ -57,7 +57,7 @@ export default function AuthScreen() {
         )}
         <div className="relative w-full max-w-md">
           <div className={`text-center mb-8 ${LOGIN_BG ? "bg-white/75 backdrop-blur-md rounded-3xl py-5 px-8 mx-auto w-fit" : ""}`}>
-            <span className="inline-block mb-4"><NyotaMark size={72} /></span>
+            <span className="inline-block mb-4"><Logo size={72} /></span>
             <h1 className="text-4xl font-semibold tracking-tight" style={serif}>Pop Collection</h1>
           </div>
 

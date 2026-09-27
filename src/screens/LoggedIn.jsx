@@ -3,6 +3,7 @@ import { supabase } from "../supabase";
 import Shelf from "./Shelf";
 import Splash from "../components/ui/Splash";
 import { normName } from "../lib/format";
+import { loadAvatar, saveAvatar } from "../lib/profile";
 
 // Loads the user's figures and the community catalog, and saves changes to Supabase.
 
@@ -11,8 +12,13 @@ export default function LoggedIn({ session }) {
   const name = session.user.user_metadata?.name || session.user.email.split("@")[0];
   const [data, setData] = useState(null);
   const [catalog, setCatalog] = useState({});
+  const [avatar, setAvatar] = useState(null);
   const [loadErr, setLoadErr] = useState("");
   const [saveErr, setSaveErr] = useState("");
+
+  // The profile picture loads on its own, so a missing picture never blocks the shelf.
+  useEffect(() => { loadAvatar(uidUser).then(setAvatar); }, [uidUser]);
+  const changeAvatar = async (picture) => { await saveAvatar(uidUser, picture); setAvatar(picture); };
 
   useEffect(() => {
     (async () => {
@@ -52,7 +58,7 @@ export default function LoggedIn({ session }) {
   if (!data) return <Splash />;
   return (
       <>
-        <Shelf user={name} initialFigs={data} onSync={sync} onLogout={() => supabase.auth.signOut()} catalog={catalog} onContribute={contribute} />
+        <Shelf user={name} avatar={avatar} onChangeAvatar={changeAvatar} initialFigs={data} onSync={sync} onLogout={() => supabase.auth.signOut()} catalog={catalog} onContribute={contribute} />
         {saveErr && <div role="alert" className="fixed bottom-6 right-6 max-w-xs rounded-2xl bg-[#B0626A] text-white text-sm px-4 py-3 shadow-lg z-50">{saveErr}</div>}
       </>
   );

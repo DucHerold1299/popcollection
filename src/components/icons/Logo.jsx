@@ -1,7 +1,16 @@
-// Logo: a sleepy girl in a cloud hood (original drawing, no official artwork).
+// The app logo (login screen, loading screen, top bar and greeting).
+// To use your own: put one image into src/assets/logo/ (jpg, png, webp, avif or svg).
+// If that folder is empty, the drawing below is shown instead.
+const LOGO_IMAGE = Object.values(
+    import.meta.glob("../../assets/logo/*.{jpg,jpeg,png,webp,avif,svg}", { eager: true, import: "default" })
+)[0];
 
-export default function NyotaMark({ size = 36 }) {
-  // Nyota-inspired: sleepy girl in a fluffy cloud hood with a little star
+export default function Logo({ size = 36 }) {
+  if (LOGO_IMAGE) {
+    // rounded-full + object-cover crops it into a circle. For a see-through PNG, use "object-contain" and remove "rounded-full".
+    return <img src={LOGO_IMAGE} alt="" aria-hidden className="inline-block rounded-full object-cover" style={{ width: size, height: size }} />;
+  }
+  // Fallback drawing: sleepy girl in a fluffy cloud hood with a little star (original, no official artwork)
   return (
       <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
         <circle cx="32" cy="32" r="32" fill="#FFE3EC" />

@@ -6,6 +6,7 @@ import Modal from "../components/ui/Modal";
 import FigureForm from "../components/figure-form/FigureForm";
 import PricePanel from "../components/prices/PricePanel";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
+import ProfilePicture from "../components/profile/ProfilePicture";
 import { blankFigure, stats } from "../lib/figures";
 import { downloadBackup, readBackup } from "../lib/backup";
 import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
@@ -19,7 +20,7 @@ const SORTS = {
 };
 
 // The main page after logging in: summary, search, the list of figures and the pop-up windows.
-export default function Shelf({ user, initialFigs, onSync, onLogout, catalog, onContribute }) {
+export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSync, onLogout, catalog, onContribute }) {
   const [figs, setFigs] = useState(initialFigs);
   const prevFigs = useRef(initialFigs);
   useEffect(() => { const before = prevFigs.current; prevFigs.current = figs; if (before !== figs) onSync(before, figs); }, [figs]);
@@ -28,6 +29,7 @@ export default function Shelf({ user, initialFigs, onSync, onLogout, catalog, on
   const [editing, setEditing] = useState(null);
   const [pricing, setPricing] = useState(null);
   const [identifying, setIdentifying] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
   const [toast, setToast] = useState("");
 
   const flash = (m) => { setToast(m); setTimeout(() => setToast(""), 2500); };
@@ -48,6 +50,12 @@ export default function Shelf({ user, initialFigs, onSync, onLogout, catalog, on
   const updateFig = (f) => { setFigs((xs) => xs.map((x) => (x.id === f.id ? f : x))); setPricing(f); };
   const remove = (f) => { if (confirm(`Delete "${f.name}"?`)) setFigs((xs) => xs.filter((x) => x.id !== f.id)); };
 
+  const changeAvatar = async (picture) => {
+    await onChangeAvatar(picture);
+    setProfileOpen(false);
+    flash(picture ? "Profile picture saved" : "Profile picture removed");
+  };
+
   const backup = () => { downloadBackup(figs, user); flash("Backup downloaded"); };
   const restore = (file) => {
     readBackup(file)
@@ -59,7 +67,7 @@ export default function Shelf({ user, initialFigs, onSync, onLogout, catalog, on
       <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27]" style={pageFont}>
         <style>{fontCss}</style>
 
-        <ShelfHeader user={user} onBackup={backup} onRestore={restore} onLogout={onLogout} />
+        <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onBackup={backup} onRestore={restore} onLogout={onLogout} />
         <ShelfHero user={user} catalogCount={Object.keys(catalog).length} totals={totals}
                    onAdd={() => setEditing(blankFigure())} onIdentify={() => setIdentifying(true)} />
 
@@ -117,6 +125,11 @@ export default function Shelf({ user, initialFigs, onSync, onLogout, catalog, on
                   onOpen={(f) => { setIdentifying(false); setPricing(f); }}
                   onAddNew={(r) => { setIdentifying(false); setEditing(blankFigure({ photo: r.photo, sig: r.sig })); }}
               />
+            </Modal>
+        )}
+        {profileOpen && (
+            <Modal title="Profile picture" onClose={() => setProfileOpen(false)}>
+              <ProfilePicture user={user} avatar={avatar} onSave={changeAvatar} />
             </Modal>
         )}
         {toast && <div role="status" className="fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-[#3D2E27] text-white text-sm px-4 py-2 shadow-lg z-50">{toast}</div>}

@@ -1,4 +1,4 @@
-import NyotaMark from "../icons/NyotaMark";
+import Logo from "../icons/Logo";
 import Icon from "../icons/Icon";
 import Delta from "../ui/Delta";
 import { eur } from "../../lib/format";
@@ -24,7 +24,7 @@ export default function ShelfHero({ user, catalogCount, totals, onAdd, onIdentif
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div>
             <h1 className="flex items-center gap-3 text-4xl sm:text-5xl font-semibold tracking-tight" style={serif}>
-              Hi {user} <NyotaMark size={52} />
+              Hi {user} <Logo size={52} />
             </h1>
             <p className="mt-3 text-sm text-[#7A6558]"><b className="text-[#3D2E27]">{catalogCount}</b> figure pictures in the community catalog</p>
             <div className="mt-7 flex flex-wrap gap-3">
