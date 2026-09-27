@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { supabase } from "./supabase";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const SOURCES = ["Vinted", "Kleinanzeigen", "eBay (sold)", "Other"];
 const SRC_COLOR = { Vinted: "#7FA9A8", Kleinanzeigen: "#9BAE7C", "eBay (sold)": "#C98E88", Other: "#A59D94" };
@@ -802,7 +804,7 @@ function Shelf({ user, initialFigs, onSync, onLogout, catalog, onContribute }) {
 /* ---------- Accounts (Supabase) ---------- */
 // Friends log in with a name + 6-digit PIN. Behind the scenes the name is turned
 // into an internal address, so nobody needs a real email.
-const toEmail = (name) => `${name.trim().toLowerCase()}@example.com`;
+const toEmail = (name) => `yourname+pop-${name.trim().toLowerCase()}@gmail.com`;
 const fontCss = `@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`;
 
 function Splash({ text = "Loading your shelf…" }) {
