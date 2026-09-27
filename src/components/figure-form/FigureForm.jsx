@@ -46,7 +46,7 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
             <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="How did you get it?">
               {[["box", <Icon.box />, "Mystery box", "Pulled from a blind box"], ["bought", <Icon.tag />, "Bought it", "Paid a specific price"]].map(([k, ic, t, d]) => (
                   <button type="button" key={k} role="radio" aria-checked={f.origin === k} onClick={() => setF({ ...f, origin: k })}
-                          className={`text-left rounded-2xl border-2 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${f.origin === k ? "border-[#E0765C] bg-[#FFF1EA]" : "border-[#F3E4D4] bg-white hover:bg-[#FFF6EC]"}`}>
+                          className={`text-left rounded-2xl border-2 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${f.origin === k ? "border-pc-accent bg-pc-softer" : "border-pc-line bg-white hover:bg-pc-surface"}`}>
                     <span aria-hidden>{ic}</span>
                     <span className="block font-bold text-sm mt-1">{t}</span>
                     <span className="block text-xs text-stone-500">{d}</span>
@@ -55,16 +55,16 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
             </div>
           </div>
           {f.origin === "box" ? (
-              <div className="sm:col-span-2 rounded-2xl bg-[#FFF6EC] p-4 space-y-3">
+              <div className="sm:col-span-2 rounded-2xl bg-pc-surface p-4 space-y-3">
                 <Field label="Box price on Pop Mart (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="12,90" /></Field>
                 <div className="flex flex-wrap items-center gap-2">
                   {BOX_PRESETS.map((p) => (
                       <button type="button" key={p} onClick={() => setF({ ...f, paid: String(p).replace(".", ",") })}
-                              className={`rounded-full px-3 py-1 text-sm border focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${Number(String(f.paid).replace(",", ".")) === p ? "bg-[#E0765C] text-white border-[#E0765C]" : "bg-white border-[#EBDCCB] hover:border-[#E0765C]"}`}>
+                              className={`rounded-full px-3 py-1 text-sm border focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${Number(String(f.paid).replace(",", ".")) === p ? "bg-pc-accent text-white border-pc-accent" : "bg-white border-pc-line-strong hover:border-pc-accent"}`}>
                         {eur(p)}
                       </button>
                   ))}
-                  <a href={popmartSearch(f.series || f.name)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#E0765C] hover:underline ml-1">Check price on Pop Mart ↗</a>
+                  <a href={popmartSearch(f.series || f.name)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-pc-accent hover:underline ml-1">Check price on Pop Mart ↗</a>
                 </div>
                 <p className="text-xs text-stone-500">Pick a typical box price or type the exact one from popmart.com.</p>
               </div>
@@ -83,7 +83,7 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
           </Field>
           <Field label="Notes"><input className={inputCls} value={f.notes} onChange={set("notes")} placeholder="Where bought, trades…" /></Field>
           <label className="flex items-center gap-3 self-end pb-2 cursor-pointer text-sm text-stone-700">
-            <input type="checkbox" checked={f.secret} onChange={set("secret")} className="w-4 h-4 accent-[#E0765C]" />
+            <input type="checkbox" checked={f.secret} onChange={set("secret")} className="w-4 h-4 accent-pc-accent" />
             Secret / chase figure
           </label>
         </div>

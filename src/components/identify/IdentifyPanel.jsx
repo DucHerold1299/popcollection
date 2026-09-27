@@ -47,13 +47,13 @@ export default function IdentifyPanel({ figs, onOpen, onAddNew }) {
                 <ul className="space-y-2">
                   {result.matches.map(({ f, score }, i) => (
                       <li key={f.id}>
-                        <button onClick={() => onOpen(f)} className={`w-full flex items-center gap-3 p-2 rounded-xl border text-left hover:bg-[#FFF6EC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${i === 0 && score > 0.65 ? "border-[#F4B8A5] bg-[#FFF1EA]" : "border-stone-200"}`}>
+                        <button onClick={() => onOpen(f)} className={`w-full flex items-center gap-3 p-2 rounded-xl border text-left hover:bg-pc-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${i === 0 && score > 0.65 ? "border-pc-ring bg-pc-softer" : "border-stone-200"}`}>
                           <Thumb src={f.photo} name={f.name} className="w-12 h-12 rounded-xl shrink-0" />
                           <span className="flex-1 min-w-0">
-                      <span className="block text-sm font-medium text-[#3D2E27] truncate">{f.name}</span>
+                      <span className="block text-sm font-medium text-pc-ink truncate">{f.name}</span>
                       <span className="block text-xs text-stone-500">{label(score)} · {Math.round(score * 100)}%</span>
                     </span>
-                          <span className="text-xs text-[#E0765C] font-medium pr-1">Prices →</span>
+                          <span className="text-xs text-pc-accent font-medium pr-1">Prices →</span>
                         </button>
                       </li>
                   ))}

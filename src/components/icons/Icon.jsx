@@ -2,17 +2,17 @@
 
 const Icon = {
   box: (p) => (
-      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-        <path d="M5 11l11-5 11 5v12l-11 5-11-5z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M5 11l11 5 11-5M16 16v12" fill="none" stroke="#CC6249" strokeWidth="1.6" strokeLinejoin="round" />
-        <text x="10.5" y="24" fontSize="8" fontWeight="800" fill="#CC6249" fontFamily="Nunito">?</text>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden className="text-pc-accent-strong" {...p}>
+        <path d="M5 11l11-5 11 5v12l-11 5-11-5z" style={{ fill: "rgb(var(--pc-soft))" }} stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M5 11l11 5 11-5M16 16v12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <text x="10.5" y="24" fontSize="8" fontWeight="800" fill="currentColor" fontFamily="Nunito">?</text>
       </svg>
   ),
   figure: (p) => (
-      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
-        <path d="M10 5c1 3 2 5 3 6M22 5c-1 3-2 5-3 6" stroke="#CC6249" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="16" cy="15" r="8" fill="#FFE9DC" stroke="#CC6249" strokeWidth="1.6" />
-        <path d="M11 26c0-3 2-4 5-4s5 1 5 4z" fill="#FFD9C7" stroke="#CC6249" strokeWidth="1.6" />
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden className="text-pc-accent-strong" {...p}>
+        <path d="M10 5c1 3 2 5 3 6M22 5c-1 3-2 5-3 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="16" cy="15" r="8" fill="#FFE9DC" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M11 26c0-3 2-4 5-4s5 1 5 4z" style={{ fill: "rgb(var(--pc-soft))" }} stroke="currentColor" strokeWidth="1.6" />
         <circle cx="13" cy="15" r="1.3" fill="#5B4038" /><circle cx="19" cy="15" r="1.3" fill="#5B4038" />
         <path d="M13.5 18.5h5" stroke="#5B4038" strokeWidth="1.2" strokeDasharray="1 1" />
       </svg>

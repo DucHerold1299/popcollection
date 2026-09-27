@@ -11,10 +11,10 @@ export default function NamePicker({ f, setF, catalog }) {
       <div className="sm:col-span-2">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-medium text-stone-500">Figure</span>
-          <div className="inline-grid grid-cols-2 bg-[#FFF1EA] rounded-full p-0.5" role="tablist" aria-label="How to choose the figure">
+          <div className="inline-grid grid-cols-2 bg-pc-softer rounded-full p-0.5" role="tablist" aria-label="How to choose the figure">
             {[["type", "Type name"], ["browse", "Browse Pop Mart"]].map(([m, l]) => (
                 <button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setMode(m)}
-                        className={`rounded-full px-3 py-1 text-xs font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${mode === m ? "bg-white shadow text-[#CC6249]" : "text-[#7A6558]"}`}>{l}</button>
+                        className={`rounded-full px-3 py-1 text-xs font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${mode === m ? "bg-white shadow text-pc-accent-strong" : "text-pc-muted"}`}>{l}</button>
             ))}
           </div>
         </div>

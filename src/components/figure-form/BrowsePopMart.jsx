@@ -15,10 +15,10 @@ export default function BrowsePopMart({ onPick }) {
   const series = current ? current.series.filter((x) => !nq || normName(x).includes(nq) || normName(current.name).includes(nq)) : [];
 
   return (
-      <div className="rounded-2xl border border-[#F3E4D4] bg-[#FFF6EC] p-3">
+      <div className="rounded-2xl border border-pc-line bg-pc-surface p-3">
         <div className="flex items-center gap-2 mb-3">
           {current && (
-              <button type="button" onClick={() => { setChar(null); setQ(""); }} className={`${btn} px-3 py-1.5 bg-white border border-[#EBDCCB] text-stone-600 hover:bg-[#FFF1EA]`} aria-label="Back to all characters">← All</button>
+              <button type="button" onClick={() => { setChar(null); setQ(""); }} className={`${btn} px-3 py-1.5 bg-white border border-pc-line-strong text-stone-600 hover:bg-pc-softer`} aria-label="Back to all characters">← All</button>
           )}
           <input className={inputCls} value={q} onChange={(e) => setQ(e.target.value)} placeholder={current ? `Search ${current.name} series…` : "Search characters or series…"} aria-label="Search Pop Mart list" />
         </div>
@@ -31,7 +31,7 @@ export default function BrowsePopMart({ onPick }) {
                   {chars.map((c) => (
                       <li key={c.name}>
                         <button type="button" onClick={() => { setChar(c.name); setQ(""); }}
-                                className="w-full rounded-2xl bg-white border border-[#F3E4D4] p-2 text-center hover:border-[#E0765C] hover:-translate-y-0.5 motion-safe:transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
+                                className="w-full rounded-2xl bg-white border border-pc-line p-2 text-center hover:border-pc-accent hover:-translate-y-0.5 motion-safe:transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring">
                           <FigureArt name={c.name} className="w-full aspect-square rounded-xl" />
                           <span className="block text-xs font-bold mt-1.5 truncate">{c.name}</span>
                           <span className="block text-[10px] text-stone-400">{c.series.length} series</span>
@@ -45,10 +45,10 @@ export default function BrowsePopMart({ onPick }) {
               {series.map((x) => (
                   <li key={x}>
                     <button type="button" onClick={() => onPick({ character: current.name, series: x })}
-                            className="w-full flex items-center gap-3 rounded-xl bg-white border border-[#F3E4D4] px-3 py-2 text-left hover:border-[#E0765C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
+                            className="w-full flex items-center gap-3 rounded-xl bg-white border border-pc-line px-3 py-2 text-left hover:border-pc-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring">
                       <FigureArt name={current.name} className="w-9 h-9 rounded-lg shrink-0" />
                       <span className="text-sm font-bold flex-1">{x}</span>
-                      <span className="text-[#E0765C] text-sm" aria-hidden>→</span>
+                      <span className="text-pc-accent text-sm" aria-hidden>→</span>
                     </button>
                   </li>
               ))}

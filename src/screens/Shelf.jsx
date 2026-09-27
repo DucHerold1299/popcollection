@@ -64,7 +64,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
   };
 
   return (
-      <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27]" style={pageFont}>
+      <div className="min-h-screen bg-pc-bg text-pc-ink" style={pageFont}>
         <style>{fontCss}</style>
 
         <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onBackup={backup} onRestore={restore} onLogout={onLogout} />
@@ -89,7 +89,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
           </div>
 
           {rows.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-[#EBDCCB] p-12 text-center">
+              <div className="rounded-2xl border border-dashed border-pc-line-strong p-12 text-center">
                 <p className="text-lg font-semibold mb-1">{figs.length ? "Nothing matches" : "Your shelf is empty"}</p>
                 <p className="text-stone-500 text-sm mb-5">{figs.length ? "Try a different search." : "Add your first figure or identify one by photo."}</p>
                 {!figs.length && <button onClick={() => setEditing(blankFigure())} className={btnPrimary}>+ Add figure</button>}
@@ -132,7 +132,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               <ProfilePicture user={user} avatar={avatar} onSave={changeAvatar} />
             </Modal>
         )}
-        {toast && <div role="status" className="fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-[#3D2E27] text-white text-sm px-4 py-2 shadow-lg z-50">{toast}</div>}
+        {toast && <div role="status" className="fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-pc-ink text-white text-sm px-4 py-2 shadow-lg z-50">{toast}</div>}
       </div>
   );
 }

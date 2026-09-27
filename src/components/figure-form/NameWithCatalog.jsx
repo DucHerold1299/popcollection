@@ -51,9 +51,9 @@ export default function NameWithCatalog({ f, setF, catalog }) {
                    if (e.key === "Escape") setOpen(false);
                  }} />
         </Field>
-        {f.series && <p className="text-xs text-stone-500 mt-1">Series: <b className="text-[#3D2E27]">{f.series}</b></p>}
+        {f.series && <p className="text-xs text-stone-500 mt-1">Series: <b className="text-pc-ink">{f.series}</b></p>}
         {open && hits.length > 0 && (
-            <ul role="listbox" className="absolute z-10 mt-1 w-full sm:w-[150%] max-h-80 overflow-y-auto bg-white rounded-2xl border border-[#F3E4D4] shadow-xl">
+            <ul role="listbox" className="absolute z-10 mt-1 w-full sm:w-[150%] max-h-80 overflow-y-auto bg-white rounded-2xl border border-pc-line shadow-xl">
               {hits.map((h, i) => {
                 const header = i === 0 || hits[i - 1].type !== h.type;
                 return (
@@ -65,7 +65,7 @@ export default function NameWithCatalog({ f, setF, catalog }) {
                       )}
                       <li role="option" aria-selected={i === hi}>
                         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => pick(h)}
-                                className={`w-full flex items-center gap-3 px-3 py-2 text-left ${i === hi ? "bg-[#FFF1EA]" : "hover:bg-[#FFF6EC]"}`}>
+                                className={`w-full flex items-center gap-3 px-3 py-2 text-left ${i === hi ? "bg-pc-softer" : "hover:bg-pc-surface"}`}>
                           {h.type === "photo"
                               ? <img src={h.c.photo} alt="" className="w-10 h-10 rounded-xl object-cover" />
                               : <FigureArt name={h.x.character} className="w-10 h-10 rounded-xl" />}

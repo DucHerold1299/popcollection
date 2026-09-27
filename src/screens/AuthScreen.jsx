@@ -38,7 +38,7 @@ export default function AuthScreen() {
   };
 
   return (
-      <div className="min-h-screen bg-[#FFF8F0] text-[#3D2E27] relative overflow-hidden flex items-center justify-center p-4" style={pageFont}>
+      <div className="min-h-screen bg-pc-bg text-pc-ink relative overflow-hidden flex items-center justify-center p-4" style={pageFont}>
         <style>{fontCss}</style>
         {LOGIN_BG ? (
             <>
@@ -46,13 +46,13 @@ export default function AuthScreen() {
                    onLoad={(e) => (e.currentTarget.style.opacity = 1)}
                    onError={(e) => (e.currentTarget.style.display = "none")}
                    className="absolute inset-0 w-full h-full object-cover opacity-0 motion-safe:transition-opacity duration-700" />
-              <div aria-hidden className="absolute inset-0 bg-[#3D2E27]/20" />
+              <div aria-hidden className="absolute inset-0 bg-pc-ink/20" />
             </>
         ) : (
             <>
-              <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-[#FFE0CC] opacity-70" />
-              <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-[#FFF0B8] opacity-60" />
-              <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-[#DDF0E4] opacity-70" />
+              <div aria-hidden className="absolute -top-24 -right-20 w-96 h-96 rounded-full bg-pc-decor1 opacity-70" />
+              <div aria-hidden className="absolute bottom-10 -left-24 w-72 h-72 rounded-full bg-pc-decor2 opacity-60" />
+              <div aria-hidden className="absolute top-1/3 left-1/2 w-40 h-40 rounded-full bg-pc-decor3 opacity-70" />
             </>
         )}
         <div className="relative w-full max-w-md">
@@ -61,11 +61,11 @@ export default function AuthScreen() {
             <h1 className="text-4xl font-semibold tracking-tight" style={serif}>Pop Collection</h1>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_-24px_rgba(160,100,60,0.45)] border border-[#F3E4D4]">
-            <div className="grid grid-cols-2 bg-[#FFF1EA] rounded-full p-1 mb-6" role="tablist">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_-24px_rgb(var(--pc-shadow)/0.45)] border border-pc-line">
+            <div className="grid grid-cols-2 bg-pc-softer rounded-full p-1 mb-6" role="tablist">
               {[["login", "Log in"], ["register", "Create account"]].map(([m, l]) => (
                   <button key={m} role="tab" aria-selected={mode === m} onClick={() => { setMode(m); setErr(""); }}
-                          className={`rounded-full py-2 text-sm font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${mode === m ? "bg-white shadow text-[#CC6249]" : "text-[#7A6558]"}`}>{l}</button>
+                          className={`rounded-full py-2 text-sm font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${mode === m ? "bg-white shadow text-pc-accent-strong" : "text-pc-muted"}`}>{l}</button>
               ))}
             </div>
             <form onSubmit={submit} className="space-y-4">
