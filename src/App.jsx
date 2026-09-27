@@ -296,43 +296,114 @@ function Thumb({ src, name = "", className = "" }) {
 /* ---------- Figure form ---------- */
 const normName = (n) => n.toLowerCase().replace(/[–—-]/g, " ").replace(/\s+/g, " ").trim();
 
-// Starter list of Pop Mart series, used for autocomplete. Add more anytime:
-// just append { character, series } to this list.
-const SERIES_LIST = [
-  // Nyota
-  { character: "Nyota", series: "Nyota's Fluffy Life" },
-  { character: "Nyota", series: "Nyota Growing up by Your Way" },
-  { character: "Nyota", series: "Nyota I Am the Seasons" },
-  { character: "Nyota", series: "Nyota We are All Stars" },
-  { character: "Nyota", series: "Nyota Where Moments Meet (Plush Pendant)" },
-  // Labubu / The Monsters
-  { character: "Labubu", series: "The Monsters – Have a Seat" },
-  { character: "Labubu", series: "The Monsters – Exciting Macaron" },
-  { character: "Labubu", series: "The Monsters – Big into Energy" },
-  { character: "Labubu", series: "The Monsters – Let's Checkmate" },
-  { character: "Labubu", series: "The Monsters – Fall in Wild" },
-  // Hirono
-  { character: "Hirono", series: "Hirono – Reshape" },
-  { character: "Hirono", series: "Hirono – Mime" },
-  { character: "Hirono", series: "Hirono – Little Mischief" },
-  { character: "Hirono", series: "Hirono – Echo" },
-  { character: "Hirono", series: "Hirono – The Other One" },
-  // Skullpanda
-  { character: "Skullpanda", series: "Skullpanda – The Sound" },
-  { character: "Skullpanda", series: "Skullpanda – Everyday Wonderland" },
-  { character: "Skullpanda", series: "Skullpanda – Tell Me What You Want" },
-  { character: "Skullpanda", series: "Skullpanda – Winter Symphony" },
-  // Crybaby
-  { character: "Crybaby", series: "Crybaby – Sad Club" },
-  { character: "Crybaby", series: "Crybaby – Crying Again" },
-  { character: "Crybaby", series: "Crybaby – Crying for Love" },
-  { character: "Crybaby", series: "Crybaby × Powerpuff Girls" },
-  // Others
-  { character: "Molly", series: "Molly – Career" },
-  { character: "Dimoo", series: "Dimoo – World" },
-  { character: "Hacipupu", series: "Hacipupu – Snuggle with You" },
-  { character: "Pucky", series: "Pucky – Sleeping Babies" },
+// Pop Mart characters and their series, used for suggestions and the browse list.
+// This is a starter list, not official or complete. Add a series by adding it to the
+// character's list, or add a new character as { name: "...", series: [ ... ] }.
+const CHARACTERS = [
+  { name: "Labubu", series: ["The Monsters – Tasty Macarons", "The Monsters – Exciting Macaron", "The Monsters – Have a Seat", "The Monsters – Big into Energy", "The Monsters – Let's Checkmate", "The Monsters – Fall in Wild", "The Monsters – Almost Hidden"] },
+  { name: "Zimomo", series: ["The Monsters – Zimomo"] },
+  { name: "Nyota", series: ["Nyota's Fluffy Life", "Nyota Growing up by Your Way", "Nyota I Am the Seasons", "Nyota We are All Stars", "Nyota Where Moments Meet (Plush Pendant)", "Nyota × Chibi Maruko"] },
+  { name: "Skullpanda", series: ["Skullpanda – The Sound", "Skullpanda – Everyday Wonderland", "Skullpanda – Tell Me What You Want", "Skullpanda – Winter Symphony", "Skullpanda – The Ink Plum Blossom", "Skullpanda – Image of Reality", "Skullpanda – Warmth"] },
+  { name: "Hirono", series: ["Hirono – Mime", "Hirono – Reshape", "Hirono – Little Mischief", "Hirono – Echo", "Hirono – The Other One", "Hirono – City of Mercy", "Hirono × Le Petit Prince", "Hirono – Living Wild (Plush)"] },
+  { name: "Crybaby", series: ["Crybaby – Sad Club", "Crybaby – Crying Again", "Crybaby – Crying for Love", "Crybaby – Crying in the Woods", "Crybaby × Powerpuff Girls"] },
+  { name: "Molly", series: ["Molly – Career", "Molly – Anniversary Statues", "Baby Molly – When I Was Three", "Baby Molly & Baby Tabby (Pinch Pendant)"] },
+  { name: "Dimoo", series: ["Dimoo – World", "Dimoo – Weaving Wonders", "Dimoo – Aquarium", "Dimoo – Dating", "Dimoo – No One's Gonna Sleep Tonight"] },
+  { name: "Hacipupu", series: ["Hacipupu – Snuggle with You", "Hacipupu × Crayon Shin-chan – One Day in Kasukabe", "Hacipupu – The Constellation"] },
+  { name: "Pucky", series: ["Pucky – Sleeping Babies", "Pucky – The Feast"] },
+  { name: "Azura", series: ["Azura – Natural Elements", "Azura – Fantasy"] },
+  { name: "Kubo", series: ["Kubo – Glimmering Glee"] },
+  { name: "Twinkle Twinkle", series: ["Twinkle Twinkle – Be a Little Star"] },
+  { name: "Sweet Bean", series: ["Sweet Bean – Supermarket"] },
+  { name: "Duckoo", series: ["Duckoo – Weekend"] },
+  { name: "Satyr Rory", series: ["Satyr Rory – Fairy Tale"] },
+  { name: "Inosoul", series: ["Inosoul – Lonely Planet"] },
+  { name: "Zsiga", series: ["Zsiga – We're So Cute"] },
+  { name: "Yuki", series: ["Yuki – Sweet Dreams"] },
+  { name: "Bobo & Coco", series: ["Bobo & Coco – Little Things"] },
+  { name: "Peach Riot", series: ["Peach Riot – Rise Up"] },
 ];
+const SERIES_LIST = CHARACTERS.flatMap((c) => c.series.map((series) => ({ character: c.name, series })));
+
+function BrowsePopMart({ onPick }) {
+  const [char, setChar] = useState(null);
+  const [q, setQ] = useState("");
+  const nq = normName(q);
+  const chars = CHARACTERS.filter((c) => !nq || normName(c.name + " " + c.series.join(" ")).includes(nq));
+  const current = char && CHARACTERS.find((c) => c.name === char);
+  const series = current ? current.series.filter((x) => !nq || normName(x).includes(nq) || normName(current.name).includes(nq)) : [];
+
+  return (
+      <div className="rounded-2xl border border-[#F3E4D4] bg-[#FFF6EC] p-3">
+        <div className="flex items-center gap-2 mb-3">
+          {current && (
+              <button type="button" onClick={() => { setChar(null); setQ(""); }} className={`${btn} px-3 py-1.5 bg-white border border-[#EBDCCB] text-stone-600 hover:bg-[#FFF1EA]`} aria-label="Back to all characters">← All</button>
+          )}
+          <input className={inputCls} value={q} onChange={(e) => setQ(e.target.value)} placeholder={current ? `Search ${current.name} series…` : "Search characters or series…"} aria-label="Search Pop Mart list" />
+        </div>
+
+        {!current ? (
+            chars.length === 0 ? (
+                <p className="text-sm text-stone-500 text-center py-6">No character matches "{q}". Switch to <b>Type name</b> to enter it yourself.</p>
+            ) : (
+                <ul className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
+                  {chars.map((c) => (
+                      <li key={c.name}>
+                        <button type="button" onClick={() => { setChar(c.name); setQ(""); }}
+                                className="w-full rounded-2xl bg-white border border-[#F3E4D4] p-2 text-center hover:border-[#E0765C] hover:-translate-y-0.5 motion-safe:transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
+                          <FigureArt name={c.name} className="w-full aspect-square rounded-xl" />
+                          <span className="block text-xs font-bold mt-1.5 truncate">{c.name}</span>
+                          <span className="block text-[10px] text-stone-400">{c.series.length} series</span>
+                        </button>
+                      </li>
+                  ))}
+                </ul>
+            )
+        ) : (
+            <ul className="space-y-1.5 max-h-72 overflow-y-auto pr-1">
+              {series.map((x) => (
+                  <li key={x}>
+                    <button type="button" onClick={() => onPick({ character: current.name, series: x })}
+                            className="w-full flex items-center gap-3 rounded-xl bg-white border border-[#F3E4D4] px-3 py-2 text-left hover:border-[#E0765C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F]">
+                      <FigureArt name={current.name} className="w-9 h-9 rounded-lg shrink-0" />
+                      <span className="text-sm font-bold flex-1">{x}</span>
+                      <span className="text-[#E0765C] text-sm" aria-hidden>→</span>
+                    </button>
+                  </li>
+              ))}
+              {series.length === 0 && <li className="text-sm text-stone-500 text-center py-4">No series matches "{q}".</li>}
+            </ul>
+        )}
+        <p className="text-[11px] text-stone-400 mt-2">Missing a series? Switch to <b>Type name</b> and enter it yourself.</p>
+      </div>
+  );
+}
+
+function NamePicker({ f, setF, catalog }) {
+  const [mode, setMode] = useState("type");
+  const [focusKey, setFocusKey] = useState(0);
+  return (
+      <div className="sm:col-span-2">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-medium text-stone-500">Figure</span>
+          <div className="inline-grid grid-cols-2 bg-[#FFF1EA] rounded-full p-0.5" role="tablist" aria-label="How to choose the figure">
+            {[["type", "Type name"], ["browse", "Browse Pop Mart"]].map(([m, l]) => (
+                <button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setMode(m)}
+                        className={`rounded-full px-3 py-1 text-xs font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0A48F] ${mode === m ? "bg-white shadow text-[#CC6249]" : "text-[#7A6558]"}`}>{l}</button>
+            ))}
+          </div>
+        </div>
+        {mode === "type" ? (
+            <NameWithCatalog key={focusKey} f={f} setF={setF} catalog={catalog} />
+        ) : (
+            <BrowsePopMart onPick={({ character, series }) => {
+              setF((x) => ({ ...x, series, name: `${character} – ` }));
+              setMode("type");
+              setFocusKey((k) => k + 1);
+            }} />
+        )}
+      </div>
+  );
+}
 
 function NameWithCatalog({ f, setF, catalog }) {
   const [open, setOpen] = useState(false);
@@ -365,7 +436,7 @@ function NameWithCatalog({ f, setF, catalog }) {
   return (
       <div className="relative">
         <Field label="Figure name *">
-          <input ref={inputRef} autoFocus className={inputCls} value={f.name} placeholder="Start typing, e.g. Nyota"
+          <input ref={inputRef} autoFocus onFocusCapture={(e) => { const v = e.target.value; e.target.setSelectionRange?.(v.length, v.length); }} className={inputCls} value={f.name} placeholder="Start typing, e.g. Nyota"
                  role="combobox" aria-expanded={open && hits.length > 0} aria-autocomplete="list"
                  onFocus={() => setOpen(true)}
                  onChange={(e) => { setF((x) => ({ ...x, name: e.target.value })); setOpen(true); setHi(0); }}
@@ -440,7 +511,7 @@ function FigureForm({ initial, onSave, onCancel, catalog = {} }) {
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          <NameWithCatalog f={f} setF={setF} catalog={catalog} />
+          <NamePicker f={f} setF={setF} catalog={catalog} />
           <Field label="Series"><input className={inputCls} value={f.series} onChange={set("series")} placeholder="e.g. The Monsters – Have a Seat" /></Field>
           <div className="sm:col-span-2">
             <span className="block text-xs font-medium text-stone-500 mb-1.5">How did you get it?</span>
