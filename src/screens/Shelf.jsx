@@ -8,7 +8,6 @@ import PricePanel from "../components/prices/PricePanel";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
 import ProfilePicture from "../components/profile/ProfilePicture";
 import { blankFigure, stats } from "../lib/figures";
-import { downloadBackup, readBackup } from "../lib/backup";
 import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
 
 const SORTS = {
@@ -56,19 +55,12 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
     flash(picture ? "Profile picture saved" : "Profile picture removed");
   };
 
-  const backup = () => { downloadBackup(figs, user); flash("Backup downloaded"); };
-  const restore = (file) => {
-    readBackup(file)
-        .then((d) => { setFigs(d); flash(`Loaded ${d.length} figures`); })
-        .catch(() => flash("That file isn't a valid backup"));
-  };
-
   return (
       <div className="min-h-screen bg-pc-bg text-pc-ink" style={pageFont}>
         <style>{fontCss}</style>
 
-        <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onBackup={backup} onRestore={restore} onLogout={onLogout} />
-        <ShelfHero user={user} catalogCount={Object.keys(catalog).length} totals={totals}
+        <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onLogout={onLogout} />
+        <ShelfHero user={user} totals={totals}
                    onAdd={() => setEditing(blankFigure())} onIdentify={() => setIdentifying(true)} />
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
@@ -101,11 +93,6 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
                 ))}
               </ul>
           )}
-
-          <p className="text-xs text-stone-400 mt-12 max-w-2xl leading-relaxed">
-            Your shelf is saved online automatically. Backup downloads a copy as a file, just in case.
-            Estimated value is the median of prices logged in the last 60 days, or all prices if none are recent.
-          </p>
         </main>
 
         {editing && (
