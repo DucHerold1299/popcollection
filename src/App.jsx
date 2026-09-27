@@ -967,9 +967,14 @@ function Splash({ text = "Loading your shelf…" }) {
 }
 
 // Login wallpapers: paste direct image links here (they should end in .jpg, .png or .webp).
-const LOGIN_WALLPAPERS = Object.values(
-    import.meta.glob("./assets/wallpapers/*.{jpg,jpeg,png,webp,avif}", { eager: true, import: "default" })
+// Tall screens (phones) use wallpapers/phone, wide screens use wallpapers/desktop.
+const PHONE_WALLPAPERS = Object.values(
+    import.meta.glob("./assets/wallpapers/phone/*.{jpg,jpeg,png,webp,avif}", { eager: true, import: "default" })
 );
+const DESKTOP_WALLPAPERS = Object.values(
+    import.meta.glob("./assets/wallpapers/desktop/*.{jpg,jpeg,png,webp,avif}", { eager: true, import: "default" })
+);
+const LOGIN_WALLPAPERS = window.matchMedia("(orientation: portrait)").matches ? PHONE_WALLPAPERS : DESKTOP_WALLPAPERS;
 
 // Picks one per page load, never the same one twice in a row.
 const pickWallpaper = () => {
