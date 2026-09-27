@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { supabase } from "./supabase";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
 
 const SOURCES = ["Vinted", "Kleinanzeigen", "eBay (sold)", "Other"];
 const SRC_COLOR = { Vinted: "#7FA9A8", Kleinanzeigen: "#9BAE7C", "eBay (sold)": "#C98E88", Other: "#A59D94" };
