@@ -51,7 +51,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
         <style>{fontCss}</style>
 
         <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onLogout={onLogout} />
-        <ShelfHero user={user} totals={totals}
+        <ShelfHero user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} totals={totals}
                    onAdd={() => setEditing(blankFigure())} onIdentify={() => setIdentifying(true)} />
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">

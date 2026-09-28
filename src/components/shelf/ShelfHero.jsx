@@ -1,4 +1,5 @@
 import Logo from "../icons/Logo";
+import Avatar from "../ui/Avatar";
 import Icon from "../icons/Icon";
 import { eur } from "../../lib/format";
 import { btnGhost, btnPrimary, serif } from "../../styles/theme";
@@ -14,7 +15,7 @@ function StatCard({ label, value, bg, icon }) {
 }
 
 // Greeting, the two main buttons and the four summary numbers.
-export default function ShelfHero({ user, totals, onAdd, onIdentify }) {
+export default function ShelfHero({ user, avatar, totals, onAdd, onIdentify, onProfile }) {
   return (
       <section className="relative overflow-hidden">
         <div aria-hidden className="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-pc-decor1 opacity-70" />
@@ -23,7 +24,12 @@ export default function ShelfHero({ user, totals, onAdd, onIdentify }) {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div>
             <h1 className="flex items-center gap-3 text-4xl sm:text-5xl font-semibold tracking-tight" style={serif}>
-              Hi {user} <Logo size={52} />
+              Hi {user}
+              {/* Your profile picture (tap to change it); the logo until you've set one. */}
+              <button type="button" onClick={onProfile} aria-label="Change profile picture" title="Change profile picture"
+                      className="rounded-full hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring focus-visible:ring-offset-2">
+                {avatar ? <Avatar src={avatar} name={user} size={52} /> : <Logo size={52} />}
+              </button>
             </h1>
             <div className="mt-7 flex flex-wrap gap-3">
               <button onClick={onAdd} className={`${btnPrimary} px-6 py-3 text-base rounded-full`}>+ Add a figure</button>
