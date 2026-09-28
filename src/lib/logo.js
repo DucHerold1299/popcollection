@@ -8,20 +8,16 @@ const LOGOS = Object.values(
 
 export const LOGO_IMAGE = pickPerVisit(LOGOS, "pc-last-logo");
 
-function iconLink(rel) {
-  let el = document.head.querySelector(`link[rel="${rel}"]`);
-  if (!el) { el = document.createElement("link"); el.rel = rel; document.head.appendChild(el); }
-  return el;
-}
-
-// Sets the browser tab icon and the homescreen icon to a picture.
+// Sets the browser tab icon to a picture (this visit's logo).
+// The homescreen / Safari favorites icon is fixed: public/apple-touch-icon.png, linked in index.html.
 export function setAppIcon(url) {
   if (!url) return;
-  // Homescreen: the picture itself (phones round the corners on their own).
-  iconLink("apple-touch-icon").href = url;
-  // Browser tab: the picture itself at first, then cropped into a circle like the logo in the app.
-  const tab = iconLink("icon");
-  tab.removeAttribute("type");
+  // Replace the fixed tab icons from index.html with one for this visit.
+  document.head.querySelectorAll('link[rel="icon"]').forEach((el) => el.remove());
+  const tab = document.createElement("link");
+  tab.rel = "icon";
+  document.head.appendChild(tab);
+  // The picture itself at first, then cropped into a circle like the logo in the app.
   tab.href = url;
   const img = new Image();
   img.onload = () => {
