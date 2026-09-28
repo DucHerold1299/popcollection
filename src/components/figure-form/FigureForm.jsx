@@ -17,7 +17,9 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const set = (k) => (e) => setF({ ...f, [k]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
-  const valid = f.name.trim() && f.paid !== "" && !isNaN(Number(String(f.paid).replace(",", ".")));
+  // A gift has no price; box and bought figures need one.
+  const isGift = f.origin === "gift";
+  const valid = f.name.trim() && (isGift || (f.paid !== "" && !isNaN(Number(String(f.paid).replace(",", ".")))));
 
   const handlePhoto = async (file) => {
     setBusy(true); setErr("");
@@ -27,7 +29,7 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
   };
 
   return (
-      <form onSubmit={(e) => { e.preventDefault(); if (valid) onSave({ ...f, paid: Number(String(f.paid).replace(",", ".")), qty: Math.max(1, Number(f.qty) || 1) }); }} className="space-y-5">
+      <form onSubmit={(e) => { e.preventDefault(); if (valid) onSave({ ...f, paid: isGift ? 0 : Number(String(f.paid).replace(",", ".")), qty: Math.max(1, Number(f.qty) || 1) }); }} className="space-y-5">
         <div className="flex items-center gap-4">
           <Thumb src={f.photo} name={f.name} className="w-24 h-24 rounded-xl shrink-0" />
           <div className="space-y-2">
@@ -43,13 +45,13 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
           <Field label="Series"><input className={inputCls} value={f.series} onChange={set("series")} placeholder="e.g. The Monsters – Have a Seat" /></Field>
           <div className="sm:col-span-2">
             <span className="block text-xs font-medium text-stone-500 mb-1.5">How did you get it?</span>
-            <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="How did you get it?">
-              {[["box", <Icon.box />, "Mystery box", "Pulled from a blind box"], ["bought", <Icon.tag />, "Bought it", "Paid a specific price"]].map(([k, ic, t, d]) => (
+            <div className="grid grid-cols-3 gap-2 sm:gap-3" role="radiogroup" aria-label="How did you get it?">
+              {[["box", <Icon.box />, "Mystery box", "Pulled from a blind box"], ["bought", <Icon.tag />, "Bought it", "Paid a specific price"], ["gift", <Icon.gift />, "Gift", "Someone gave it to you"]].map(([k, ic, t, d]) => (
                   <button type="button" key={k} role="radio" aria-checked={f.origin === k} onClick={() => setF({ ...f, origin: k })}
                           className={`text-left rounded-2xl border-2 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${f.origin === k ? "border-pc-accent bg-pc-softer" : "border-pc-line bg-white hover:bg-pc-surface"}`}>
                     <span aria-hidden>{ic}</span>
                     <span className="block font-bold text-sm mt-1">{t}</span>
-                    <span className="block text-xs text-stone-500">{d}</span>
+                    <span className="hidden sm:block text-xs text-stone-500">{d}</span>
                   </button>
               ))}
             </div>
@@ -68,6 +70,10 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
                 </div>
                 <p className="text-xs text-stone-500">Pick a typical box price or type the exact one from popmart.com.</p>
               </div>
+          ) : isGift ? (
+              <div className="sm:col-span-2">
+                <Field label="Who gave it to you?"><input className={inputCls} value={f.giftFrom || ""} onChange={set("giftFrom")} placeholder="e.g. Mia, for my birthday" /></Field>
+              </div>
           ) : (
               <>
                 <Field label="Price you paid (€) *"><input className={inputCls} inputMode="decimal" value={f.paid} onChange={set("paid")} placeholder="25,00" /></Field>
@@ -77,7 +83,7 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
               </>
           )}
           <Field label="Quantity"><input type="number" min="1" className={inputCls} value={f.qty} onChange={set("qty")} /></Field>
-          <Field label="Bought on"><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>
+          <Field label={isGift ? "Got it on" : "Bought on"}><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>
           <Field label="Condition">
             <select className={inputCls} value={f.condition} onChange={set("condition")}>{CONDITIONS.map((c) => <option key={c}>{c}</option>)}</select>
           </Field>
