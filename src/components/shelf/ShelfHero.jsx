@@ -2,6 +2,7 @@ import Logo from "../icons/Logo";
 import Avatar from "../ui/Avatar";
 import Icon from "../icons/Icon";
 import { eur } from "../../lib/format";
+import { HERO_IMAGE } from "../../lib/heroImages";
 import { btnGhost, btnPrimary, serif } from "../../styles/theme";
 
 function StatCard({ label, value, bg, icon }) {
@@ -14,13 +15,24 @@ function StatCard({ label, value, bg, icon }) {
   );
 }
 
-// Greeting, the two main buttons and the four summary numbers.
+// Greeting, the two main buttons and the four summary numbers, on the background picture from src/assets/hero/.
 export default function ShelfHero({ user, avatar, totals, onAdd, onIdentify, onProfile }) {
   return (
       <section className="relative overflow-hidden">
-        <div aria-hidden className="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-pc-decor1 opacity-70" />
-        <div aria-hidden className="absolute top-40 -left-24 w-64 h-64 rounded-full bg-pc-decor2 opacity-60" />
-        <div aria-hidden className="absolute bottom-0 right-1/3 w-40 h-40 rounded-full bg-pc-decor3 opacity-70" />
+        {HERO_IMAGE ? (
+            <>
+              <img src={HERO_IMAGE} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+              {/* Light fade on the left so "Hi …" stays readable, and at the bottom so the picture blends into the page. */}
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-pc-bg/85 via-pc-bg/30 to-transparent" />
+              <div aria-hidden className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-pc-bg" />
+            </>
+        ) : (
+            <>
+              <div aria-hidden className="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-pc-decor1 opacity-70" />
+              <div aria-hidden className="absolute top-40 -left-24 w-64 h-64 rounded-full bg-pc-decor2 opacity-60" />
+              <div aria-hidden className="absolute bottom-0 right-1/3 w-40 h-40 rounded-full bg-pc-decor3 opacity-70" />
+            </>
+        )}
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div>
             <h1 className="flex items-center gap-3 text-4xl sm:text-5xl font-semibold tracking-tight" style={serif}>
