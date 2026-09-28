@@ -1,4 +1,7 @@
+import { characterImage } from "../../lib/characterImages";
+
 // Placeholder picture for a figure without a photo. The character is guessed from the name.
+// If src/assets/characters/ has a picture for the character, that is shown; otherwise a drawing.
 
 const PALETTES = [["#FFD9C7", "#E0765C"], ["#FFF0B8", "#C99A2E"], ["#D8EFE0", "#4F7F5E"], ["#E6DDF5", "#7E62A3"], ["#D9ECF7", "#4C83A8"], ["#FFE0EA", "#C45C82"]];
 const hashStr = (s) => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
@@ -6,6 +9,13 @@ const hashStr = (s) => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0,
 export default function FigureArt({ name = "", className = "" }) {
   const n = name.toLowerCase();
   const [bg, ink] = PALETTES[hashStr(name) % PALETTES.length];
+
+  const image = characterImage(name);
+  if (image) {
+    // object-contain shows the whole picture on the pastel background; use object-cover to fill the square instead.
+    return <img src={image} alt={name ? `Picture of ${name}` : "Figure picture"} className={`object-contain ${className}`} style={{ background: bg }} />;
+  }
+
   const kind = /labubu|monsters|zimomo/.test(n) ? "labubu" : /hirono/.test(n) ? "hirono" : /skull ?panda/.test(n) ? "skullpanda"
       : /cry ?baby/.test(n) ? "crybaby" : /nyota/.test(n) ? "nyota" : /molly/.test(n) ? "molly" : /dimoo/.test(n) ? "dimoo" : /pucky/.test(n) ? "pucky" : "box";
   const face = (eyes = "dot") => (

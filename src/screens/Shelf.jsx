@@ -86,7 +86,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
         </main>
 
         {editing && (
-            <Modal title={figs.some((x) => x.id === editing.id) ? "Edit figure" : "New figure"} onClose={() => setEditing(null)}>
+            <Modal bare title={figs.some((x) => x.id === editing.id) ? "Edit figure" : "New figure"} onClose={() => setEditing(null)}>
               <FigureForm catalog={catalog} initial={{ ...editing, paid: String(editing.paid) }} onSave={save} onCancel={() => setEditing(null)} />
             </Modal>
         )}

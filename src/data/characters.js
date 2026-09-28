@@ -18,11 +18,6 @@ export const CHARACTERS = [
     { name: "The Monsters – Almost Hidden", figures: ["Canned Pineapple", "Lamp", "Sculpture", "Fire Hydrant", "Tree House", "Flask", "Traffic Light", "Flower Pot", "Spray Can", "Bread Bag", "Mailbox", "Cactus"], secrets: ["Kiddie Ride"] },
     { name: "The Monsters – Fall in Wild (Plush)" },
   ] },
-  { name: "Zimomo", series: [
-    { name: "Zimomo – I Found You (Plush)" },
-    { name: "Zimomo – Angel in Clouds (Plush)" },
-    { name: "Zimomo – 10th Anniversary (Plush)" },
-  ] },
   { name: "Nyota", series: [
     { name: "Nyota's Fluffy Life", figures: ["Home", "Calling", "Brave Together", "Warm Sunlight", "Unknown Road", "Our Secret", "Little Mountain", "See Love", "Kitten Hug", "A Brief Escape", "Lost Star", "Daze"], secrets: ["Cotton Candy Daydream"] },
     { name: "Nyota Growing up by Your Way", figures: ["Road", "Thinking", "Feeling", "Friends", "Into My Heart", "Dream", "Hi", "Poem", "Growing Up", "Childhood", "Time", "Hidden Love"], secrets: ["Fly to Your Own Mountain"] },
