@@ -83,7 +83,8 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
               </>
           )}
           <Field label="Quantity"><input type="number" min="1" className={inputCls} value={f.qty} onChange={set("qty")} /></Field>
-          <Field label={isGift ? "Got it on" : "Bought on"}><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>
+          {/* Gifts have no date field; they keep the day they were added (used for "Recently bought"). */}
+          {!isGift && <Field label="Bought on"><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>}
           <Field label="Condition">
             <select className={inputCls} value={f.condition} onChange={set("condition")}>{CONDITIONS.map((c) => <option key={c}>{c}</option>)}</select>
           </Field>

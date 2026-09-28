@@ -15,7 +15,7 @@ export default function FigureCard({ f, onEdit, onDelete }) {
               {f.secret && <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-[#F3EAD3] text-[#8A7340] px-2 py-0.5">Secret</span>}
             </div>
             <h3 className="font-semibold leading-snug mt-0.5">{f.name}{f.qty > 1 && <span className="text-sm font-normal text-stone-400"> ×{f.qty}</span>}</h3>
-            <p className="text-xs text-stone-400 mt-1">{f.condition} · {new Date(f.bought).toLocaleDateString("de-DE")}</p>
+            <p className="text-xs text-stone-400 mt-1">{f.condition}{f.origin !== "gift" && ` · ${new Date(f.bought).toLocaleDateString("de-DE")}`}</p>
           </div>
         </div>
         <div className="px-4 pb-4 flex-1 space-y-3">
