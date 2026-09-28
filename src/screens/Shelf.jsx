@@ -6,6 +6,8 @@ import Modal from "../components/ui/Modal";
 import FigureForm from "../components/figure-form/FigureForm";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
 import ProfilePicture from "../components/profile/ProfilePicture";
+import DreamySelect from "../components/ui/DreamySelect";
+import Icon from "../components/icons/Icon";
 import { blankFigure, collectionTotals, paidTotal } from "../lib/figures";
 import { btnPrimary, fontCss, pageFont, serif } from "../styles/theme";
 
@@ -16,6 +18,13 @@ const Sparkle = ({ className = "" }) => (
       <circle cx="19" cy="18.5" r="1.6" fill="currentColor" opacity=".55" />
     </svg>
 );
+
+const SORT_OPTIONS = [
+  { value: "recent", label: "Recently bought", icon: <Icon.clock /> },
+  { value: "name", label: "Name A–Z", icon: <Icon.letters /> },
+  { value: "series", label: "Series", icon: <Icon.stack /> },
+  { value: "paid", label: "Price paid", icon: <Icon.coin /> },
+];
 
 const SORTS = {
   recent: (a, b) => b.bought.localeCompare(a.bought),
@@ -70,17 +79,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               <Sparkle className="absolute z-10 left-4 top-1/2 -translate-y-1/2 text-pc-accent pointer-events-none" />
               <input className="pc-dreamy-field py-3 pl-11 pr-4 text-sm" placeholder="Search your shelf…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
             </div>
-            <div className="relative sm:w-56">
-              <select className="pc-dreamy-field py-3 pl-5 pr-11 text-sm font-semibold" value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
-                <option value="recent">Recently bought</option>
-                <option value="name">Name A–Z</option>
-                <option value="series">Series</option>
-                <option value="paid">Price paid</option>
-              </select>
-              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden className="absolute right-4 top-1/2 -translate-y-1/2 text-pc-accent pointer-events-none">
-                <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
+            <DreamySelect className="sm:w-56" label="Sort by" value={sort} onChange={setSort} options={SORT_OPTIONS} />
           </div>
 
           {rows.length === 0 ? (

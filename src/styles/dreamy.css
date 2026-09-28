@@ -39,4 +39,29 @@
 @media (prefers-reduced-motion: no-preference) {
   .pc-dreamy-field:focus { transform: translateY(-1px); }
 }
-select.pc-dreamy-field { appearance: none; -webkit-appearance: none; cursor: pointer; }
+button.pc-dreamy-field { cursor: pointer; }
+
+/* The pop-up list of DreamySelect: frosted glass, pastel edge, soft pop-in. */
+.pc-dreamy-menu {
+  border: 1.5px solid transparent;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(rgb(255 255 255 / 0.86), rgb(255 255 255 / 0.86)) padding-box,
+    linear-gradient(140deg, rgb(var(--pc-ring)), rgb(var(--pc-decor3)), rgb(var(--pc-decor4)), rgb(var(--pc-ring))) border-box;
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: 0 22px 50px -18px rgb(var(--pc-shadow) / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.9);
+  transform-origin: top right;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pc-dreamy-menu { animation: pc-pop 0.18s ease-out; }
+}
+@keyframes pc-pop {
+  from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.pc-dreamy-option { transition: background-color 0.15s ease, color 0.15s ease; }
+.pc-dreamy-option.is-active {
+  background: linear-gradient(90deg, rgb(var(--pc-softer)), rgb(var(--pc-decor4) / 0.7));
+  color: rgb(var(--pc-ink));
+}

@@ -49,6 +49,31 @@ const Icon = {
         <path d="M4 8l8 4 8-4M12 12v9" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
       </svg>
   ),
+  // Small icons for the sort menu (16px, take the text color).
+  clock: (p) => (
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden {...p}>
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+  ),
+  letters: (p) => (
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden {...p}>
+        <path d="M3.5 17l4-10 4 10M5 13.5h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14.5 8h6l-6 9h6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+  ),
+  stack: (p) => (
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden {...p}>
+        <path d="M12 4l8.5 4.5L12 13 3.5 8.5z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+  ),
+  coin: (p) => (
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden {...p}>
+        <circle cx="12" cy="12" r="8.5" fill="currentColor" opacity=".2" stroke="currentColor" strokeWidth="2" />
+        <path d="M14.8 9.2a3.3 3.3 0 100 5.6M8 11h5M8 13.2h5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+  ),
 };
 
 export default Icon;
