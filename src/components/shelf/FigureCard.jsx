@@ -1,11 +1,9 @@
 import Icon from "../icons/Icon";
 import Thumb from "../ui/Thumb";
 import { eur } from "../../lib/format";
-import { searchLinks } from "../../lib/links";
 
 // One figure on the shelf.
 export default function FigureCard({ f, onEdit, onDelete }) {
-  const query = f.name.replace(/–/g, " ").replace(/\s+/g, " ").trim();
   return (
       <li className="rounded-3xl bg-white border border-pc-line overflow-hidden flex flex-col shadow-[0_6px_20px_-12px_rgb(var(--pc-shadow)/0.35)] hover:-translate-y-1 hover:shadow-[0_14px_30px_-14px_rgb(var(--pc-shadow)/0.45)] motion-safe:transition-all">
         <div className="flex gap-4 p-4">
@@ -26,12 +24,6 @@ export default function FigureCard({ f, onEdit, onDelete }) {
             <span className="text-stone-500">Paid</span>
             <span className="font-medium tabular-nums">{eur(f.paid)}{f.qty > 1 && <span className="text-stone-400 font-normal"> each</span>}</span>
           </div>
-          <p className="text-xs text-stone-400">
-            Look up:{" "}
-            {searchLinks(query).map((l, i) => (
-                <span key={l.name}>{i > 0 && " · "}<a href={l.url} target="_blank" rel="noopener noreferrer" className="font-bold text-pc-accent hover:underline">{l.name} ↗</a></span>
-            ))}
-          </p>
         </div>
         <div className="flex border-t border-stone-100 text-sm">
           <button onClick={onEdit} className="flex-1 py-2.5 font-medium text-pc-accent hover:bg-pc-softer focus:outline-none focus-visible:bg-pc-softer">Edit</button>
