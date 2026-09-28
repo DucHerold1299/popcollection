@@ -32,7 +32,7 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
           <Thumb src={f.photo} name={f.name} className="w-24 h-24 rounded-xl shrink-0" />
           <div className="space-y-2">
             <div className="flex gap-2 flex-wrap">
-              <PhotoPicker onPhoto={handlePhoto} busy={busy} label={f.photo ? "Replace photo" : "Add photo"} />
+              <PhotoPicker onPhoto={handlePhoto} busy={busy} cameraLabel={f.photo ? "New photo" : "Take photo"} />
               {f.photo && <button type="button" onClick={() => setF({ ...f, photo: null, sig: null })} className={`${btn} text-stone-500 hover:text-[#B0626A]`}>Remove</button>}
             </div>
             <p className="text-xs text-stone-500">{err || (f.fromCatalog && f.photo ? "Picture added from the community catalog. Replace it with your own anytime." : "Your photo is shared with the community catalog, so friends get this picture too.")}</p>

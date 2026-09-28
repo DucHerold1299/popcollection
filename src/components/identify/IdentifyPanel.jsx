@@ -34,8 +34,8 @@ export default function IdentifyPanel({ figs, onOpen, onAddNew }) {
               None of your figures has a photo yet, so there's nothing to compare against. Take a photo anyway and save it as a new figure. Next time it can be recognised.
             </div>
         )}
-        <div className="flex items-center gap-3">
-          <PhotoPicker onPhoto={handle} busy={busy} label={result ? "Try another photo" : "Take or upload photo"} />
+        <div className="flex flex-wrap items-center gap-3">
+          <PhotoPicker onPhoto={handle} busy={busy} cameraLabel={result ? "Try another photo" : "Take photo"} />
           {err && <span className="text-sm text-[#B0626A]">{err}</span>}
         </div>
 

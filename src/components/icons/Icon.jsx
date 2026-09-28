@@ -37,6 +37,13 @@ const Icon = {
         <path d="M10.3 12.4q.6-.8 1.4-.9" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
       </svg>
   ),
+  gallery: (p) => (
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden {...p}>
+        <rect x="3.5" y="5" width="17" height="14" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="9" cy="10" r="1.6" fill="currentColor" />
+        <path d="M4 17l5-4.5 3.5 3 3-2.5 4.5 4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      </svg>
+  ),
   bag: (p) => (
       <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden {...p}>
         <path d="M5 8h14l-1 12H6z" fill="currentColor" opacity=".25" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
