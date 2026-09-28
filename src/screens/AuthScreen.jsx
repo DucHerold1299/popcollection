@@ -4,7 +4,7 @@ import Field from "../components/ui/Field";
 import Logo from "../components/icons/Logo";
 import { toEmail } from "../lib/auth";
 import { LOGIN_BG } from "../lib/wallpapers";
-import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
+import { btnPrimary, inputCls, pageFont, serif } from "../styles/theme";
 
 // Log in / create account, with a random wallpaper behind it.
 
@@ -39,7 +39,6 @@ export default function AuthScreen() {
 
   return (
       <div className="min-h-screen bg-pc-bg text-pc-ink relative overflow-hidden flex items-center justify-center p-4" style={pageFont}>
-        <style>{fontCss}</style>
         {LOGIN_BG ? (
             <>
               <img src={LOGIN_BG} alt="" aria-hidden

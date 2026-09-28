@@ -5,36 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#FFF8F0" />
     <title>Pop Collection</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      // App colors (bg-pc-bg, text-pc-ink, …). The values come from CSS variables that
-      // src/lib/theme.js fills in from the login wallpaper. Defaults are in the <style> below.
-      const pc = (name) => `rgb(var(--pc-${name}) / <alpha-value>)`;
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              pc: Object.fromEntries(
-                ["bg", "surface", "softer", "soft", "line", "line-strong", "ring", "accent", "accent-strong",
-                 "ink", "muted", "shadow", "decor1", "decor2", "decor3", "decor4"].map((n) => [n, pc(n)])
-              ),
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      /* Default colors, used when there is no wallpaper (or before it has loaded). Format: R G B */
-      :root {
-        --pc-bg: 255 248 240;         --pc-surface: 255 246 236;   --pc-softer: 255 241 234;
-        --pc-soft: 253 227 216;       --pc-line: 243 228 212;      --pc-line-strong: 235 220 203;
-        --pc-ring: 240 164 143;       --pc-accent: 224 118 92;     --pc-accent-strong: 204 98 73;
-        --pc-ink: 61 46 39;           --pc-muted: 122 101 88;      --pc-shadow: 160 100 60;
-        --pc-decor1: 255 228 212;     --pc-decor2: 255 241 192;    --pc-decor3: 223 241 229;
-        --pc-decor4: 238 230 246;
-      }
-      body { margin: 0; background: rgb(var(--pc-bg)); transition: background-color 0.4s; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" />
   </head>
   <body>
     <div id="root"></div>

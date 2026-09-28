@@ -5,5 +5,4 @@ export const btn = "rounded-xl px-4 py-2 text-sm font-medium transition-colors f
 export const serif = { fontFamily: "'Fraunces', Georgia, serif" };
 export const btnPrimary = `${btn} bg-pc-accent text-white font-bold shadow-[0_4px_14px_-4px_rgb(var(--pc-accent)/0.6)] hover:bg-pc-accent-strong`;
 export const btnGhost = `${btn} border border-pc-line-strong bg-white text-stone-700 hover:bg-pc-surface`;
-export const fontCss = `@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');`;
 export const pageFont = { fontFamily: "'Nunito', system-ui, sans-serif" };

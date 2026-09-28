@@ -9,7 +9,7 @@ import ProfilePicture from "../components/profile/ProfilePicture";
 import DreamySelect from "../components/ui/DreamySelect";
 import Icon from "../components/icons/Icon";
 import { blankFigure, collectionTotals, paidTotal } from "../lib/figures";
-import { btnPrimary, fontCss, pageFont, serif } from "../styles/theme";
+import { btnPrimary, pageFont, serif } from "../styles/theme";
 
 // Little four-point star, used as the search icon.
 const Sparkle = ({ className = "" }) => (
@@ -65,7 +65,6 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
 
   return (
       <div className="min-h-screen bg-pc-bg text-pc-ink" style={pageFont}>
-        <style>{fontCss}</style>
 
         <ShelfHeader user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} onLogout={onLogout} />
         <ShelfHero user={user} avatar={avatar} onProfile={() => setProfileOpen(true)} totals={totals}

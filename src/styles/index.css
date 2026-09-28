@@ -1,0 +1,21 @@
+/* Tailwind, built into the site by Vite (see tailwind.config.js). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default app colors, used when there is no wallpaper (or before it has loaded). Format: R G B.
+   src/lib/theme.js replaces them with colors from the login wallpaper. */
+:root {
+  --pc-bg: 255 248 240;         --pc-surface: 255 246 236;   --pc-softer: 255 241 234;
+  --pc-soft: 253 227 216;       --pc-line: 243 228 212;      --pc-line-strong: 235 220 203;
+  --pc-ring: 240 164 143;       --pc-accent: 224 118 92;     --pc-accent-strong: 204 98 73;
+  --pc-ink: 61 46 39;           --pc-muted: 122 101 88;      --pc-shadow: 160 100 60;
+  --pc-decor1: 255 228 212;     --pc-decor2: 255 241 192;    --pc-decor3: 223 241 229;
+  --pc-decor4: 238 230 246;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--pc-bg));
+  transition: background-color 0.4s;
+}
