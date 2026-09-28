@@ -7,7 +7,15 @@ import FigureForm from "../components/figure-form/FigureForm";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
 import ProfilePicture from "../components/profile/ProfilePicture";
 import { blankFigure, collectionTotals, paidTotal } from "../lib/figures";
-import { btnPrimary, fontCss, inputCls, pageFont, serif } from "../styles/theme";
+import { btnPrimary, fontCss, pageFont, serif } from "../styles/theme";
+
+// Little four-point star, used as the search icon.
+const Sparkle = ({ className = "" }) => (
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden className={className}>
+      <path d="M12 2.5c.6 4.6 2.4 6.9 7 7.5-4.6.6-6.4 2.9-7 7.5-.6-4.6-2.4-6.9-7-7.5 4.6-.6 6.4-2.9 7-7.5z" fill="currentColor" />
+      <circle cx="19" cy="18.5" r="1.6" fill="currentColor" opacity=".55" />
+    </svg>
+);
 
 const SORTS = {
   recent: (a, b) => b.bought.localeCompare(a.bought),
@@ -59,15 +67,20 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
 
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <div className="relative sm:max-w-sm w-full">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm" aria-hidden>⌕</span>
-              <input className={inputCls + " pl-8"} placeholder="Search by name, series or notes…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
+              <Sparkle className="absolute z-10 left-4 top-1/2 -translate-y-1/2 text-pc-accent pointer-events-none" />
+              <input className="pc-dreamy-field py-3 pl-11 pr-4 text-sm" placeholder="Search your shelf…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
             </div>
-            <select className={inputCls + " sm:w-56"} value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
-              <option value="recent">Recently bought</option>
-              <option value="name">Name A–Z</option>
-              <option value="series">Series</option>
-              <option value="paid">Price paid</option>
-            </select>
+            <div className="relative sm:w-56">
+              <select className="pc-dreamy-field py-3 pl-5 pr-11 text-sm font-semibold" value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort by">
+                <option value="recent">Recently bought</option>
+                <option value="name">Name A–Z</option>
+                <option value="series">Series</option>
+                <option value="paid">Price paid</option>
+              </select>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden className="absolute right-4 top-1/2 -translate-y-1/2 text-pc-accent pointer-events-none">
+                <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
           </div>
 
           {rows.length === 0 ? (

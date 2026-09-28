@@ -118,3 +118,37 @@ export function applyWallpaperTheme(url) {
   };
   img.src = url;
 }
+
+// Three colors from a picture's main hues, dark enough to read as large text on a light background.
+// Used for the "Hi …" gradient on the shelf page. Resolves to null for (almost) grey pictures.
+const TEXT_CACHE_KEY = "pc-picture-colors-v1";
+
+export function loadPictureColors(url) {
+  return new Promise((resolve) => {
+    if (!url) return resolve(null);
+    let cache = {};
+    try { cache = JSON.parse(localStorage.getItem(TEXT_CACHE_KEY)) || {}; } catch {}
+    if (url in cache) return resolve(cache[url]);
+
+    const img = new Image();
+    img.onload = () => {
+      const { hues, saturation, colourful } = analysePicture(img);
+      let colors = null;
+      if (hues.length && colourful >= 0.02) {
+        const s = clamp(saturation, 0.55, 0.85);
+        const picked = hues.slice(0, 3);
+        [40, -40].forEach((shift) => { if (picked.length < 3) picked.push((picked[0] + shift + 360) % 360); });
+        colors = picked.map((h) => {
+          let l = 0.55;
+          while (l > 0.2 && contrast(hslToRgb(h, s, l), [255, 255, 255]) < 3.5) l -= 0.01;
+          return `rgb(${hslToRgb(h, s, l).join(" ")})`;
+        });
+      }
+      if (Object.keys(cache).length > 30) cache = {};
+      try { localStorage.setItem(TEXT_CACHE_KEY, JSON.stringify({ ...cache, [url]: colors })); } catch {}
+      resolve(colors);
+    };
+    img.onerror = () => resolve(null);
+    img.src = url;
+  });
+}

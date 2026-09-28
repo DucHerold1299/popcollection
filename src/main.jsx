@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+import "./styles/dreamy.css";
 import { LOGIN_BG } from "./lib/wallpapers";
 import { applyWallpaperTheme } from "./lib/theme";
 import { LOGO_IMAGE, setAppIcon } from "./lib/logo";
