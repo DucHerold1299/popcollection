@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Logo from "../icons/Logo";
 import Avatar from "../ui/Avatar";
 import Icon from "../icons/Icon";
-import { eur } from "../../lib/format";
 import { HERO_IMAGE } from "../../lib/heroImages";
 import { loadPictureColors } from "../../lib/theme";
 
@@ -10,12 +9,13 @@ import { loadPictureColors } from "../../lib/theme";
 const THEME_GRADIENT = "rgb(var(--pc-accent-strong)), rgb(var(--pc-accent)), rgb(var(--pc-ink)), rgb(var(--pc-accent-strong))";
 import { btnGhost, btnPrimary, serif } from "../../styles/theme";
 
-function StatCard({ label, value, bg, icon }) {
+function StatCard({ label, value, detail, bg, icon }) {
   return (
-      <div className={`${bg} rounded-3xl p-5`}>
+      <div className={`${bg} rounded-3xl p-5 min-w-0`}>
         <div className="mb-2" aria-hidden>{icon}</div>
         <div className="text-xs font-bold text-pc-muted">{label}</div>
-        <div className="text-lg sm:text-2xl font-extrabold mt-0.5 tabular-nums">{value}</div>
+        <div className={`font-extrabold mt-0.5 tabular-nums ${detail ? "text-sm sm:text-base leading-snug line-clamp-2" : "text-lg sm:text-2xl"}`}>{value}</div>
+        {detail && <div className="text-xs text-pc-muted mt-0.5">{detail}</div>}
       </div>
   );
 }
@@ -60,7 +60,9 @@ export default function ShelfHero({ user, avatar, totals, onAdd, onIdentify, onP
           </div>
           <div className="grid grid-cols-2 gap-3">
             <StatCard label="On the shelf" value={totals.count} bg="bg-pc-decor1" icon={<Icon.figure />} />
-            <StatCard label="Total paid" value={eur(totals.paid)} bg="bg-pc-decor2" icon={<Icon.tag />} />
+            <StatCard label="Top collection" bg="bg-pc-decor2" icon={<Icon.crown />}
+                      value={totals.top ? totals.top.series : "–"}
+                      detail={totals.top ? `${totals.top.count} ${totals.top.count === 1 ? "figure" : "figures"}` : "Add figures with a series"} />
             <StatCard label="Series" value={totals.series} bg="bg-pc-decor3" icon={<Icon.box />} />
             <StatCard label="Secrets" value={totals.secrets} bg="bg-pc-decor4" icon={<Icon.secret />} />
           </div>

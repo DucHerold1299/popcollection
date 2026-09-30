@@ -29,7 +29,6 @@ const Icon = {
       <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden {...p}>
         <path d="M5 15V6h9l13 13-9 9z" fill="#D8EFE0" stroke="#4F7F5E" strokeWidth="1.6" strokeLinejoin="round" />
         <circle cx="10.5" cy="11.5" r="2" fill="#4F7F5E" />
-        <text x="13" y="23" fontSize="8" fontWeight="800" fill="#4F7F5E" fontFamily="Nunito">€</text>
       </svg>
   ),
   secret: (p) => (
@@ -90,10 +89,12 @@ const Icon = {
         <path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
   ),
-  coin: (p) => (
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden {...p}>
-        <circle cx="12" cy="12" r="8.5" fill="currentColor" opacity=".2" stroke="currentColor" strokeWidth="2" />
-        <path d="M14.8 9.2a3.3 3.3 0 100 5.6M8 11h5M8 13.2h5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  // Summary card: the series you have the most of.
+  crown: (p) => (
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden className="text-pc-accent-strong" {...p}>
+        <path d="M5 23l-1.5-12 7 5 5.5-9 5.5 9 7-5L27 23z" style={{ fill: "rgb(var(--pc-soft))" }} stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M5.5 26.5h21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="16" cy="18" r="1.8" fill="currentColor" />
       </svg>
   ),
 };

@@ -1,6 +1,5 @@
 import Icon from "../icons/Icon";
 import Thumb from "../ui/Thumb";
-import { eur } from "../../lib/format";
 
 // One figure on the shelf.
 export default function FigureCard({ f, onEdit, onDelete }) {
@@ -11,28 +10,16 @@ export default function FigureCard({ f, onEdit, onDelete }) {
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <p className="text-xs text-stone-500 truncate">{f.series || "No series"}</p>
-              <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold rounded-full bg-pc-softer text-pc-accent-strong px-2 py-0.5">{f.origin === "gift" ? <><Icon.miniGift />Gift</> : f.origin === "bought" ? <><Icon.bag />{f.from || "Bought"}</> : <><Icon.miniBox />Box</>}</span>
+              <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-bold rounded-full bg-pc-softer text-pc-accent-strong px-2 py-0.5">{f.origin === "gift" ? <><Icon.miniGift /><span className="max-w-[7rem] truncate">{f.giftFrom ? `From ${f.giftFrom}` : "Gift"}</span></> : f.origin === "bought" ? <><Icon.bag />{f.from || "Bought"}</> : <><Icon.miniBox />Box</>}</span>
               {f.secret && <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-[#F3EAD3] text-[#8A7340] px-2 py-0.5">Secret</span>}
             </div>
             <h3 className="font-semibold leading-snug mt-0.5">{f.name}{f.qty > 1 && <span className="text-sm font-normal text-stone-400"> ×{f.qty}</span>}</h3>
             <p className="text-xs text-stone-400 mt-1">{f.condition}{f.origin !== "gift" && ` · ${new Date(f.bought).toLocaleDateString("de-DE")}`}</p>
           </div>
         </div>
-        <div className="px-4 pb-4 flex-1 space-y-3">
-          {f.notes && <p className="text-sm text-stone-500 italic">“{f.notes}”</p>}
-          <div className="flex items-center justify-between gap-2 rounded-xl bg-pc-surface px-3 py-2 text-sm">
-            {f.origin === "gift" ? (
-                <>
-                  <span className="text-stone-500">Gift</span>
-                  <span className="font-medium truncate">{f.giftFrom ? `from ${f.giftFrom}` : "for free"}</span>
-                </>
-            ) : (
-                <>
-                  <span className="text-stone-500">Paid</span>
-                  <span className="font-medium tabular-nums">{eur(f.paid)}{f.qty > 1 && <span className="text-stone-400 font-normal"> each</span>}</span>
-                </>
-            )}
-          </div>
+        {/* flex-1 keeps Edit / Delete at the bottom when cards in a row have different heights. */}
+        <div className="px-4 flex-1">
+          {f.notes && <p className="pb-4 text-sm text-stone-500 italic">“{f.notes}”</p>}
         </div>
         <div className="flex border-t border-stone-100 text-sm">
           <button onClick={onEdit} className="flex-1 py-2.5 font-medium text-pc-accent hover:bg-pc-softer focus:outline-none focus-visible:bg-pc-softer">Edit</button>

@@ -2,13 +2,15 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import ShelfHeader from "../components/shelf/ShelfHeader";
 import ShelfHero from "../components/shelf/ShelfHero";
 import FigureCard from "../components/shelf/FigureCard";
+import SeriesOverview from "../components/shelf/SeriesOverview";
+import SeriesChecklist from "../components/shelf/SeriesChecklist";
 import Modal from "../components/ui/Modal";
 import FigureForm from "../components/figure-form/FigureForm";
 import IdentifyPanel from "../components/identify/IdentifyPanel";
 import ProfilePicture from "../components/profile/ProfilePicture";
 import DreamySelect from "../components/ui/DreamySelect";
 import Icon from "../components/icons/Icon";
-import { blankFigure, collectionTotals, paidTotal } from "../lib/figures";
+import { blankFigure, collectionTotals, seriesOf, seriesOverview } from "../lib/figures";
 import { btnPrimary, pageFont, serif } from "../styles/theme";
 
 // Little four-point star, used as the search icon.
@@ -20,26 +22,25 @@ const Sparkle = ({ className = "" }) => (
 );
 
 const SORT_OPTIONS = [
-  { value: "recent", label: "Recently bought", icon: <Icon.clock /> },
+  { value: "recent", label: "Newest first", icon: <Icon.clock /> },
   { value: "name", label: "Name A–Z", icon: <Icon.letters /> },
   { value: "series", label: "Series", icon: <Icon.stack /> },
-  { value: "paid", label: "Price paid", icon: <Icon.coin /> },
 ];
 
 const SORTS = {
   recent: (a, b) => b.bought.localeCompare(a.bought),
   name: (a, b) => a.name.localeCompare(b.name),
   series: (a, b) => (a.series || "~").localeCompare(b.series || "~") || a.name.localeCompare(b.name),
-  paid: (a, b) => paidTotal(b) - paidTotal(a),
 };
 
-// The main page after logging in: summary, search, the list of figures and the pop-up windows.
+// The main page after logging in: summary, your series, search, the list of figures and the pop-up windows.
 export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSync, onLogout, catalog, onContribute }) {
   const [figs, setFigs] = useState(initialFigs);
   const prevFigs = useRef(initialFigs);
   useEffect(() => { const before = prevFigs.current; prevFigs.current = figs; if (before !== figs) onSync(before, figs); }, [figs]);
   const [q, setQ] = useState("");
   const [sort, setSort] = useState("recent");
+  const [seriesFilter, setSeriesFilter] = useState(null); // a series name, or null for all
   const [editing, setEditing] = useState(null);
   const [identifying, setIdentifying] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -49,10 +50,17 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
 
   const rows = useMemo(() => {
     const t = q.toLowerCase();
-    return figs.filter((f) => (f.name + " " + f.series + " " + f.notes).toLowerCase().includes(t)).sort(SORTS[sort]);
-  }, [figs, q, sort]);
+    return figs
+        .filter((f) => !seriesFilter || seriesOf(f) === seriesFilter)
+        .filter((f) => (f.name + " " + f.series + " " + f.notes).toLowerCase().includes(t))
+        .sort(SORTS[sort]);
+  }, [figs, q, sort, seriesFilter]);
 
+  const groups = useMemo(() => seriesOverview(figs), [figs]);
   const totals = useMemo(() => collectionTotals(figs), [figs]);
+  const selectedGroup = groups.find((g) => g.series === seriesFilter);
+  // If the last figure of the selected series is deleted, show everything again.
+  useEffect(() => { if (seriesFilter && !selectedGroup) setSeriesFilter(null); }, [seriesFilter, selectedGroup]);
 
   const save = (f) => { if (f.photo && !f.fromCatalog) onContribute(f); setFigs((xs) => (xs.some((x) => x.id === f.id) ? xs.map((x) => (x.id === f.id ? f : x)) : [f, ...xs])); setEditing(null); flash("Saved"); };
   const remove = (f) => { if (confirm(`Delete "${f.name}"?`)) setFigs((xs) => xs.filter((x) => x.id !== f.id)); };
@@ -71,7 +79,15 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
                    onAdd={() => setEditing(blankFigure())} onIdentify={() => setIdentifying(true)} />
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
-          <h2 className="text-2xl font-semibold mb-5" style={serif}>My shelf</h2>
+          {groups.length > 0 && (
+              <section className="mb-10 space-y-4">
+                <h2 className="text-2xl font-semibold" style={serif}>My series</h2>
+                <SeriesOverview groups={groups} selected={seriesFilter} onSelect={setSeriesFilter} />
+                {selectedGroup?.checklist && <SeriesChecklist group={selectedGroup} onClose={() => setSeriesFilter(null)} />}
+              </section>
+          )}
+
+          <h2 className="text-2xl font-semibold mb-5" style={serif}>{seriesFilter ? seriesFilter : "My shelf"}</h2>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <div className="relative sm:max-w-sm w-full">
@@ -79,6 +95,12 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
               <input className="pc-dreamy-field py-3 pl-11 pr-4 text-sm" placeholder="Search your shelf…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search collection" />
             </div>
             <DreamySelect className="sm:w-56" label="Sort by" value={sort} onChange={setSort} options={SORT_OPTIONS} />
+            {seriesFilter && (
+                <button type="button" onClick={() => setSeriesFilter(null)}
+                        className="self-start sm:self-center rounded-full px-4 py-2 text-sm font-bold text-pc-accent hover:bg-pc-softer focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring">
+                  ✕ Show all series
+                </button>
+            )}
           </div>
 
           {rows.length === 0 ? (
@@ -98,7 +120,7 @@ export default function Shelf({ user, avatar, onChangeAvatar, initialFigs, onSyn
 
         {editing && (
             <Modal bare title={figs.some((x) => x.id === editing.id) ? "Edit figure" : "New figure"} onClose={() => setEditing(null)}>
-              <FigureForm catalog={catalog} initial={{ ...editing, paid: String(editing.paid) }} onSave={save} onCancel={() => setEditing(null)} />
+              <FigureForm catalog={catalog} initial={editing} onSave={save} onCancel={() => setEditing(null)} />
             </Modal>
         )}
         {identifying && (
