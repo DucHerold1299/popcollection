@@ -66,8 +66,22 @@ export default function FigureForm({ initial, onSave, onCancel, catalog = {} }) 
               </div>
           )}
           <Field label="Quantity"><input type="number" min="1" className={inputCls} value={f.qty} onChange={set("qty")} /></Field>
-          {/* Gifts have no date field; they keep the day they were added (used for "Newest first"). */}
-          {!isGift && <Field label="Bought on"><input type="date" className={inputCls} value={f.bought} onChange={set("bought")} /></Field>}
+          {/* Gifts have no date field; they keep the day they were added (used for "Newest first").
+              Otherwise: pick the date, or tap "I don't know" if you don't remember it. */}
+          {!isGift && (
+              <div>
+                <span className="block text-xs font-medium text-stone-500 mb-1.5">Bought on</span>
+                <div className="flex gap-2">
+                  {f.dateUnknown
+                      ? <div className={`${inputCls} text-stone-400 flex items-center`}>Don't remember</div>
+                      : <input type="date" aria-label="Bought on" className={inputCls} value={f.bought} onChange={set("bought")} />}
+                  <button type="button" aria-pressed={!!f.dateUnknown} onClick={() => setF({ ...f, dateUnknown: !f.dateUnknown })}
+                          className={`shrink-0 rounded-xl px-3 text-sm font-bold border focus:outline-none focus-visible:ring-2 focus-visible:ring-pc-ring ${f.dateUnknown ? "bg-pc-accent text-white border-pc-accent" : "bg-white text-pc-muted border-pc-line-strong hover:border-pc-accent"}`}>
+                    I don't know
+                  </button>
+                </div>
+              </div>
+          )}
           <Field label="Condition">
             <select className={inputCls} value={f.condition} onChange={set("condition")}>{CONDITIONS.map((c) => <option key={c}>{c}</option>)}</select>
           </Field>
